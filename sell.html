@@ -343,6 +343,18 @@
       }
     });
   </script>
-
+<script>
+  // Close the sidebar if a user clicks on the main content area
+  document.addEventListener('click', function(event) {
+    const sidebar = document.querySelector('.sell-sidebar');
+    const menuBtn = document.querySelector('.mobile-menu-btn');
+    
+    if (sidebar.classList.contains('active')) {
+      if (!sidebar.contains(event.target) && !menuBtn.contains(event.target)) {
+        sidebar.classList.remove('active');
+      }
+    }
+  });
+</script>
 </body>
 </html>
