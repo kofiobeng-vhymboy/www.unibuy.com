@@ -757,6 +757,28 @@
     /* Mapbox overrides */
     .mapboxgl-ctrl-logo { display: none !important; }
     .mapboxgl-ctrl-attrib { display: none !important; }
+    /* --- Add at the bottom of the <style> tag in map.html --- */
+@media (max-width: 768px) {
+  .safe-exchange-container {
+    flex-direction: column; /* Stacks the sidebar and map */
+    height: auto;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: 400px; /* Limits sidebar height on mobile */
+    border-right: none;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .map-section {
+    height: 500px; /* Ensures the map has enough space */
+  }
+
+  .header-flex {
+    padding: 15px;
+  }
+}
   </style>
 </head>
 
