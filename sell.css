@@ -840,3 +840,54 @@ body.sell-page {
     padding: 15px !important;
   }
 }
+/* --- SELL PAGE HAMBURGER & SIDEBAR --- */
+@media (max-width: 992px) {
+  /* The Sidebar Drawer */
+  .sell-sidebar {
+    position: fixed !important;
+    left: -260px; /* Hide off-screen */
+    top: 0;
+    width: 250px !important;
+    height: 100vh !important;
+    z-index: 2000;
+    transition: 0.3s ease-in-out;
+    background: white;
+    box-shadow: 5px 0 15px rgba(0,0,0,0.1);
+  }
+
+  /* When Menu is toggled open */
+  .sell-sidebar.active {
+    left: 0 !important;
+  }
+
+  /* Adjust Main Content to fill screen */
+  .sell-main-wrap, .pf-main {
+    margin-left: 0 !important;
+    width: 100% !important;
+    padding: 15px !important;
+  }
+
+  /* The Hamburger Button Appearance */
+  .mobile-menu-btn {
+    display: flex !important;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #BBCB2E;
+    color: black;
+    border: none;
+    padding: 15px 25px;
+    border-radius: 50px;
+    font-weight: 800;
+    z-index: 2001;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    cursor: pointer;
+    align-items: center;
+    gap: 8px;
+  }
+}
+
+/* Hide button on computers */
+@media (min-width: 993px) {
+  .mobile-menu-btn { display: none !important; }
+}
