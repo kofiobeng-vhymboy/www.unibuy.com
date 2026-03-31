@@ -772,118 +772,77 @@ body.sell-page {
     align-items: flex-start;
   }
 }
-/* --- Add to the end of sell.css or profile.css --- */
+/* --- SELL PAGE MOBILE FIX --- */
 @media (max-width: 992px) {
-  .sell-sidebar, .profile-sidebar {
-    width: 100%;
-    height: auto;
-    position: relative;
-    top: 0;
-    flex-direction: row;
-    overflow-x: auto; /* Allows swiping through menu items */
-    padding: 10px;
-  }
-
-  .sell-main-wrap, .pf-main {
-    margin-left: 0; /* Removes the gap left by the sidebar */
-    padding: 20px;
-  }
-
-  .sell-nav, .sidebar-menu {
-    display: flex;
-    flex-direction: row;
-  }
-
-  .sell-sidebar-logo, .sidebar-menu li span {
-    display: none; /* Hides text to save space on mobile */
-  }
-}
-
-@media (max-width: 768px) {
-  .pf-header-card {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .pf-grid, .sell-stats-grid {
-    grid-template-columns: 1fr; /* Single column for settings/stats */
-  }
-}
-@media (max-width: 992px) {
-  /* Un-fix the sidebar so it sits at the top */
-  .sell-sidebar {
-    position: relative !important;
-    width: 100% !important;
-    height: auto !important;
-    flex-direction: row !important;
-    padding: 10px 0 !important;
-    top: 0 !important;
-    left: 0 !important;
-    border-right: none !important;
-    border-bottom: 1px solid #f1f5f9;
-  }
-
-  /* Hide logo and text icons to save space */
-  .sell-sidebar-logo, .sell-nav-item span {
-    display: none !important;
-  }
-
-  .sell-nav {
-    flex-direction: row !important;
-    justify-content: space-around;
-    width: 100%;
-  }
-
-  /* Remove the margin that was pushing the content to the right */
-  .sell-main-wrap, .pf-main {
-    margin-left: 0 !important;
-    padding: 15px !important;
-  }
-}
-/* --- SELL PAGE HAMBURGER & SIDEBAR --- */
-@media (max-width: 992px) {
-  /* The Sidebar Drawer */
+  /* 1. The Sidebar Drawer */
   .sell-sidebar {
     position: fixed !important;
-    left: -260px; /* Hide off-screen */
+    left: -280px; /* Hide off-screen */
     top: 0;
-    width: 250px !important;
+    width: 260px !important;
     height: 100vh !important;
+    background: white !important;
     z-index: 2000;
-    transition: 0.3s ease-in-out;
-    background: white;
-    box-shadow: 5px 0 15px rgba(0,0,0,0.1);
+    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex !important;
+    flex-direction: column !important;
+    box-shadow: 10px 0 25px rgba(0,0,0,0.15);
+    padding: 20px 0 !important;
   }
 
-  /* When Menu is toggled open */
+  /* Slide in when "active" */
   .sell-sidebar.active {
     left: 0 !important;
   }
 
-  /* Adjust Main Content to fill screen */
-  .sell-main-wrap, .pf-main {
-    margin-left: 0 !important;
-    width: 100% !important;
-    padding: 15px !important;
+  /* 2. Show Icons and Text together */
+  .sell-nav {
+    flex-direction: column !important;
+    display: flex !important;
+    padding: 20px 0 !important;
   }
 
-  /* The Hamburger Button Appearance */
+  .sell-nav-item {
+    display: flex !important;
+    align-items: center !important;
+    gap: 15px !important;
+    padding: 15px 25px !important;
+    font-size: 16px !important;
+    color: #334155 !important;
+    width: 100%;
+  }
+
+  /* 3. The Floating Hamburger Button */
   .mobile-menu-btn {
     display: flex !important;
     position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #BBCB2E;
+    top: 20px;
+    left: 20px;
+    background: #BBCB2E; /* Your Brand Lime */
     color: black;
     border: none;
-    padding: 15px 25px;
-    border-radius: 50px;
-    font-weight: 800;
-    z-index: 2001;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    padding: 12px 20px;
+    border-radius: 10px;
+    z-index: 2100;
+    font-weight: 700;
+    font-size: 14px;
+    gap: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     cursor: pointer;
-    align-items: center;
-    gap: 8px;
+  }
+
+  /* 4. Adjust Main Layout */
+  .sell-layout {
+    display: block !important;
+  }
+
+  .sell-main-wrap, .pf-main {
+    margin-left: 0 !important;
+    padding: 85px 20px 20px 20px !important; /* Extra top padding for the button */
+  }
+
+  .sell-sidebar-logo {
+    padding: 0 25px 20px !important;
   }
 }
 
