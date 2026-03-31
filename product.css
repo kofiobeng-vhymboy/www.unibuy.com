@@ -181,3 +181,18 @@
 .active-wishlist i {
   color: #ef4444 !important;
 }
+/* --- Add to the end of product.css --- */
+@media (max-width: 900px) {
+  .product-main-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .main-image-box {
+    height: 350px;
+  }
+
+  .thumbnail-row img {
+    width: 70px;
+    height: 70px;
+  }
+}
