@@ -505,3 +505,28 @@ body.marketplace-page { background: #f9fafb; }
     max-width: none;
   }
 }
+/* --- Marketplace & Home Mobile Fix --- */
+@media (max-width: 768px) {
+  /* Fix shifting product images */
+  .mp-grid { 
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)) !important;
+    gap: 12px !important;
+    padding: 10px;
+  }
+
+  .mp-card img {
+    height: 140px !important; /* Forces images to stay in their box */
+    object-fit: cover;
+  }
+
+  /* Fix the top navigation overlapping */
+  .nav-container {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .main-nav {
+    display: none; /* Usually better to hide links on mobile or use a hamburger menu */
+  }
+}
