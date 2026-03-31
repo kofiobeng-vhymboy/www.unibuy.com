@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>UniBuy | Sony WH-1000XM4</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="product.css">
+</head>
+<body class="product-page">
+
+  <!-- Consistent Navbar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <img src="./assets/images/logo.png" alt="UniBuy" class="logo-img">
+        <span>UniBuy</span>
+      </div>
+      <nav class="main-nav">
+        <a href="home.html" class="nav-link">Home</a>
+        <a href="marketplace.html" class="nav-link active">Marketplace</a>
+        <a href="sell.html" class="nav-link">Sell</a>
+      </nav>
+      <div class="nav-search">
+        <input type="text" placeholder="Search by campus or item..." />
+      </div>
+      <div class="user-actions">
+        <button class="icon-btn wishlist-btn" id="nav-wishlist">
+          <i class="far fa-heart"></i>
+        </button>
+        <button class="icon-btn" onclick="window.location.href='messages.html'">
+          <i class="far fa-comment-dots"></i><span class="dot"></span>
+        </button>
+        <button class="post-btn"><i class="fas fa-plus"></i> Post Item</button>
+        <div class="profile">
+          <img src="./assets/svg/profile 2.svg" alt="Profile" class="avatar" />
+          <span class="online-dot"></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="product-container">
+    <div class="breadcrumb">
+      Marketplace / Electronics / Sony WH-1000XM4 Noise Cancelling Headphones
+    </div>
+
+    <div class="product-main-grid">
+      <!-- Left Column -->
+      <div class="product-left">
+        <div class="main-image-box">
+          <img src="./assets/images/Sony WH-1000XM4 Noise Cancelling Headphones.webp" 
+               id="mainImg" alt="Sony WH-1000XM4">
+        </div>
+
+        <div class="thumbnail-row">
+          <img src="./assets/images/Recommended Product 4.webp" 
+               onclick="document.getElementById('mainImg').src=this.src" alt="thumb">
+          <img src="./assets/images/Recommended Product 1.webp" 
+               onclick="document.getElementById('mainImg').src=this.src" alt="thumb">
+          <img src="./assets/images/Recommended Product 2 .webp" 
+               onclick="document.getElementById('mainImg').src=this.src" alt="thumb">
+          <img src="./assets/images/Recommended Product 3.webp" 
+               onclick="document.getElementById('mainImg').src=this.src" alt="thumb">
+        </div>
+
+        <div class="product-details">
+          <div class="details-header">
+            <h2>Product Details</h2>
+            <span class="ref-id">Ref ID: UB-119420</span>
+          </div>
+          <div class="description">
+            <p>Selling my lightly used Sony WH-1000XM4 headphones. I bought these for finals week last semester and they are absolute life-savers for studying in the library.</p>
+            <p>Condition is nearly perfect - no scratches on the ear cups, and the battery still lasts for a full 30 hours. Includes the original carrying case, USB-C charging cable, and the 3.5mm jack for when you forget to charge them.</p>
+            <p>Only selling because I upgraded to the XM5s. Willing to meet anywhere on North Campus or near the Student Union.</p>
+          </div>
+
+          <div class="specs-grid">
+            <div class="spec-item"><label>Brand</label><p>Sony</p></div>
+            <div class="spec-item"><label>Model</label><p>WH-1000XM4</p></div>
+            <div class="spec-item"><label>Color</label><p>Midnight Black</p></div>
+            <div class="spec-item"><label>Usage</label><p>6 Months</p></div>
+            <div class="spec-item"><label>Battery Life</label><p>30 Hours</p></div>
+            <div class="spec-item"><label>Noise Cancellation</label><p>Active (ANC)</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Sidebar -->
+      <div class="product-sidebar">
+        <div class="sidebar-card">
+          <div class="product-tags">
+            <span class="featured-tag">Featured Listing</span>
+            <span class="condition-tag">Used - Like New</span>
+          </div>
+          <h1>Sony WH-1000XM4 Noise Cancelling Headphones</h1>
+          <div class="price-section">
+            <span class="current-price">₵240.00</span>
+            <span class="original-price">₵349.99 New</span>
+          </div>
+          
+          <!-- Fixed Buttons -->
+          <button class="chat-with-seller" onclick="goToMessages()">
+            💬 Chat with Seller
+          </button>
+          
+          <button class="save-listing" id="save-btn" onclick="toggleWishlist(this)">
+            ♡ Save Listing
+          </button>
+          
+          <p class="payment-note">🛡️ Payments are made in-person during the meetup.</p>
+        </div>
+
+        <div class="sidebar-card seller-info">
+          <h3>Seller Verification</h3>
+          <div class="seller-flex">
+            <div class="seller-avatar">JB</div>
+            <div>
+              <h4>Jaden Brown <span class="verified-badge">✓ Verified</span></h4>
+              <p>Senior @ KNUST, Kumasi</p>
+              <p>⭐⭐⭐⭐⭐ (42 Reviews)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="meetup-card">
+          <h4>🛡️ Safe Meetup Zones</h4>
+          <div class="meetup-list">
+            <div class="meetup-item">Student Union Lobby <small>5 min walk</small></div>
+            <div class="meetup-item">Main Library Plaza <small>8 min walk</small></div>
+            <div class="meetup-item">Campus Police Welcome Center <small>12 min walk</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- More in Electronics -->
+    <div class="more-in-category">
+      <div class="section-header">
+        <h3>More in Electronics</h3>
+        <a href="marketplace.html" class="view-all">View All →</a>
+      </div>
+      <div class="more-grid">
+        <div class="more-item">
+          <img src="./assets/images/MacBook Air M2 - Pristine (1).webp" alt="">
+          <h5>MacBook Air M2</h5>
+          <strong>₵6500</strong>
+        </div>
+        <div class="more-item">
+          <img src="./assets/images/iPad Pro 11-inch.webp" alt="">
+          <h5>iPad Pro 11-Inch</h5>
+          <strong>₵3200</strong>
+        </div>
+        <div class="more-item">
+          <img src="./assets/images/Kindle Paperwhite.webp" alt="">
+          <h5>Kindle Paperwhite</h5>
+          <strong>₵85</strong>
+        </div>
+        <div class="more-item">
+          <img src="./assets/images/Mechanical Keyboard.webp" alt="">
+          <h5>Mechanical Keyboard</h5>
+          <strong>₵45</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="./assets/images/logo.png" alt="UniBuy" class="logo-img">
+          <span>UniBuy</span>
+        </div>
+        <p>The exclusive marketplace for verified university students. Buy, sell, and trade safely within your campus community.</p>
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <div class="footer-column">
+          <h4>SHOP</h4>
+          <ul>
+            <li><a href="#">Textbooks</a></li>
+            <li><a href="#">Electronics</a></li>
+            <li><a href="#">Dorm Decor</a></li>
+            <li><a href="#">Campus Gear</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>SUPPORT</h4>
+          <ul>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="map.html">Safe Meetups</a></li>
+            <li><a href="#">Trust & Safety</a></li>
+            <li><a href="#">Refund Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>COMPANY</h4>
+          <ul>
+            <li><a href="#">About UniBuy</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Student Ambassadors</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 UniBuy Inc. All rights reserved.</p>
+      <p>&#127760; Global Campus Network &nbsp;•&nbsp; &#10003; Verified Student Only Platform</p>
+    </div>
+  </footer>
+
+  <script>
+    // Toggle Save Listing (wishlist)
+    function toggleWishlist(btn) {
+      const icon = btn.querySelector('i') || btn;
+      if (btn.textContent.includes('♡')) {
+        btn.innerHTML = '❤️ Saved';
+        btn.style.color = '#ef4444';
+        // Optional: highlight navbar wishlist icon
+        document.getElementById('nav-wishlist').classList.add('active-wishlist');
+      } else {
+        btn.innerHTML = '♡ Save Listing';
+        btn.style.color = '';
+        document.getElementById('nav-wishlist').classList.remove('active-wishlist');
+      }
+    }
+
+    // Go to Messages (you can change the link later when you create messages.html)
+    function goToMessages() {
+      window.location.href = '#'; // Change to "messages.html" when ready
+      // For now it stays on page - you can replace '#' with actual page
+    }
+
+    // Make navbar wishlist heart turn red when item is saved
+    document.getElementById('nav-wishlist').addEventListener('click', function() {
+      this.classList.toggle('active-wishlist');
+    });
+  </script>
+
+</body>
+</html>

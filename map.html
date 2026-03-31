@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UniBuy — Safe Exchange</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green:      #BBCB2E;
+      --green-dark: #a0b026;
+      --green-bg:   #f7fee7;
+      --blue:       #008BFF;
+      --red:        #ef4444;
+      --gray-50:    #f9fafb;
+      --gray-100:   #f3f4f6;
+      --gray-200:   #e5e7eb;
+      --gray-400:   #9ca3af;
+      --gray-500:   #6b7280;
+      --gray-700:   #374151;
+      --gray-900:   #111827;
+      --shadow-sm:  0 1px 4px rgba(0,0,0,0.06);
+      --shadow-md:  0 4px 16px rgba(0,0,0,0.10);
+      --shadow-lg:  0 8px 32px rgba(0,0,0,0.14);
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Inter', sans-serif;
+      background: #f5f6e8;
+      color: var(--gray-900);
+      overflow: hidden;
+    }
+
+    /* ── NAVBAR ── */
+    .navbar {
+      height: 62px;
+      background: white;
+      border-bottom: 1px solid var(--gray-200);
+      display: flex;
+      align-items: center;
+      padding: 0 28px;
+      gap: 28px;
+      position: relative;
+      z-index: 100;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--green);
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .nav-logo-icon {
+      width: 34px;
+      height: 34px;
+      background: var(--green);
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-logo-icon svg {
+      width: 20px;
+      height: 20px;
+      fill: white;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--gray-700);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--green); }
+
+    .nav-search {
+      flex: 1;
+      max-width: 420px;
+      position: relative;
+    }
+
+    .nav-search i {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gray-400);
+      font-size: 14px;
+    }
+
+    .nav-search input {
+      width: 100%;
+      padding: 9px 16px 9px 40px;
+      border: 1.5px solid var(--gray-200);
+      border-radius: 999px;
+      font-size: 14px;
+      font-family: 'Inter', sans-serif;
+      background: var(--gray-50);
+      color: var(--gray-900);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .nav-search input:focus { border-color: var(--green); }
+    .nav-search input::placeholder { color: var(--gray-400); }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-left: auto;
+    }
+
+    .icon-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: none;
+      background: none;
+      color: var(--gray-500);
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .icon-btn:hover { background: var(--gray-100); color: var(--green); }
+
+    .icon-btn .notif-dot {
+      width: 8px;
+      height: 8px;
+      background: #34d399;
+      border: 2px solid white;
+      border-radius: 50%;
+      position: absolute;
+      top: 4px;
+      right: 4px;
+    }
+
+    .post-btn {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 18px;
+      background: transparent;
+      color: var(--green);
+      border: 1.5px solid var(--green);
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .post-btn:hover { background: var(--green); color: #000; }
+
+    .nav-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid var(--green);
+      cursor: pointer;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .nav-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .avatar-online {
+      width: 10px;
+      height: 10px;
+      background: #34d399;
+      border: 2px solid white;
+      border-radius: 50%;
+      position: absolute;
+      bottom: 1px;
+      right: 1px;
+    }
+
+    /* ── PAGE BODY: sidebar + map ── */
+    .page-body {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      height: calc(100vh - 62px - 44px); /* minus navbar and footer */
+    }
+
+    /* ── LEFT PANEL ── */
+    .left-panel {
+      background: white;
+      border-right: 1px solid var(--gray-200);
+      overflow-y: auto;
+      padding: 18px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      z-index: 10;
+    }
+
+    .left-panel::-webkit-scrollbar { width: 4px; }
+    .left-panel::-webkit-scrollbar-thumb { background: var(--gray-200); border-radius: 4px; }
+
+    /* Active Meeting Card */
+    .meeting-card {
+      background: white;
+      border: 1px solid var(--gray-200);
+      border-radius: 14px;
+      padding: 14px 16px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .meeting-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .active-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--green-dark);
+      background: var(--green-bg);
+      border: 1px solid var(--green);
+      padding: 3px 10px;
+      border-radius: 999px;
+    }
+
+    .active-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--green);
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .meeting-menu-btn {
+      background: none;
+      border: none;
+      color: var(--gray-400);
+      font-size: 16px;
+      cursor: pointer;
+      padding: 2px 6px;
+      border-radius: 6px;
+      transition: background 0.15s;
+    }
+
+    .meeting-menu-btn:hover { background: var(--gray-100); }
+
+    .meeting-item-row {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .item-thumb {
+      width: 54px;
+      height: 54px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #f472b6, #818cf8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .item-thumb svg {
+      width: 28px;
+      height: 28px;
+      fill: white;
+      opacity: 0.85;
+    }
+
+    .item-info h3 {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--gray-900);
+      line-height: 1.35;
+      margin-bottom: 4px;
+    }
+
+    .item-price {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--green-dark);
+    }
+
+    .meeting-location {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--gray-50);
+      border: 1px solid var(--gray-200);
+      border-radius: 10px;
+      padding: 9px 12px;
+    }
+
+    .meeting-location i {
+      color: var(--blue);
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+
+    .meeting-location div strong {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--gray-900);
+      display: block;
+    }
+
+    .meeting-location div span {
+      font-size: 11px;
+      color: var(--gray-400);
+    }
+
+    /* Safe Meeting Protocol Card */
+    .protocol-card {
+      background: white;
+      border: 1px solid var(--gray-200);
+      border-radius: 14px;
+      padding: 14px 16px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .protocol-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: 14px;
+    }
+
+    .protocol-title i {
+      color: var(--gray-500);
+      font-size: 14px;
+    }
+
+    .protocol-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .protocol-item:last-child { margin-bottom: 0; }
+
+    .protocol-radio {
+      width: 16px;
+      height: 16px;
+      border: 2px solid var(--gray-300, #d1d5db);
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .protocol-item-text strong {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--gray-900);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .protocol-item-text span {
+      font-size: 11px;
+      color: var(--gray-400);
+      line-height: 1.4;
+    }
+
+    /* ── MAP ── */
+    #map {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    /* Map zoom controls */
+    .map-controls {
+      position: absolute;
+      right: 16px;
+      top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      z-index: 50;
+    }
+
+    .map-ctrl-btn {
+      width: 36px;
+      height: 36px;
+      background: white;
+      border: 1px solid var(--gray-200);
+      border-radius: 8px;
+      font-size: 18px;
+      color: var(--gray-700);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-sm);
+      transition: background 0.15s;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+    }
+
+    .map-ctrl-btn:hover { background: var(--gray-50); }
+
+    .map-ctrl-btn.locate {
+      margin-top: 8px;
+      color: var(--blue);
+    }
+
+    .map-ctrl-btn.expand {
+      color: var(--gray-500);
+    }
+
+    /* Safe zone label on map */
+    .map-safe-zone-label {
+      position: absolute;
+      bottom: 38%;
+      left: 38%;
+      background: rgba(255,255,255,0.92);
+      border: 1px solid var(--gray-200);
+      border-radius: 999px;
+      padding: 5px 14px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--gray-700);
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: var(--shadow-sm);
+      pointer-events: none;
+      z-index: 20;
+    }
+
+    .map-safe-zone-label i {
+      color: var(--gray-600, #4b5563);
+      font-size: 12px;
+    }
+
+    /* ── BOTTOM STATUS BAR ── */
+    .status-bar {
+      position: fixed;
+      bottom: 44px; /* above footer */
+      left: 320px;
+      right: 0;
+      padding: 0 24px 14px;
+      z-index: 80;
+      pointer-events: none;
+    }
+
+    .status-card {
+      background: white;
+      border: 1px solid var(--gray-200);
+      border-radius: 16px;
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+      pointer-events: all;
+      max-width: 740px;
+      margin: 0 auto;
+    }
+
+    .status-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 18px 12px;
+      gap: 12px;
+    }
+
+    .status-user {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .status-avatar {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid #34d399;
+      flex-shrink: 0;
+      position: relative;
+      background: var(--gray-100);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .status-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .status-avatar-dot {
+      width: 10px;
+      height: 10px;
+      background: #34d399;
+      border: 2px solid white;
+      border-radius: 50%;
+      position: absolute;
+      bottom: 1px;
+      right: 1px;
+    }
+
+    .status-user-info h4 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: 3px;
+    }
+
+    .status-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .verified-tag {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--green-dark);
+      background: var(--green-bg);
+      border: 1px solid var(--green);
+      padding: 2px 8px;
+      border-radius: 999px;
+    }
+
+    .eta-tag {
+      font-size: 11px;
+      color: var(--gray-500);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .eta-tag i { font-size: 11px; }
+
+    .status-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .action-btn-outline {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 9px 16px;
+      background: transparent;
+      border: 1.5px solid var(--gray-200);
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--gray-700);
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .action-btn-outline:hover { border-color: var(--gray-400); background: var(--gray-50); }
+    .action-btn-outline i { font-size: 13px; }
+
+    .action-btn-call {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: transparent;
+      border: 1.5px solid var(--gray-200);
+      color: var(--gray-500);
+      font-size: 15px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .action-btn-call:hover { border-color: var(--green); color: var(--green); }
+
+    .arrived-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 22px;
+      background: var(--green);
+      color: #000;
+      border: none;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 700;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+
+    .arrived-btn:hover { background: var(--green-dark); }
+    .arrived-btn i { font-size: 12px; }
+
+    .status-card-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 18px 12px;
+      border-top: 1px solid var(--gray-100);
+    }
+
+    .status-note {
+      font-size: 12px;
+      color: var(--gray-400);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .status-note i { font-size: 12px; }
+
+    .meeting-guide-link {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--blue);
+      text-decoration: none;
+      transition: text-decoration 0.1s;
+    }
+
+    .meeting-guide-link:hover { text-decoration: underline; }
+
+    /* ── CAMPUS SOS ── */
+    .sos-btn {
+      position: fixed;
+      bottom: 60px;
+      right: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 20px;
+      background: var(--red);
+      color: white;
+      border: none;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(239,68,68,0.4);
+      z-index: 90;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .sos-btn:hover {
+      background: #dc2626;
+      transform: translateY(-2px);
+    }
+
+    .sos-btn i { font-size: 14px; }
+
+    /* ── FOOTER ── */
+    .site-footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 44px;
+      background: white;
+      border-top: 1px solid var(--gray-200);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 28px;
+      z-index: 100;
+    }
+
+    .footer-left {
+      font-size: 12px;
+      color: var(--gray-400);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .footer-encrypt {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      color: var(--gray-400);
+    }
+
+    .footer-encrypt i {
+      color: #34d399;
+      font-size: 11px;
+    }
+
+    .footer-right {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-right a {
+      font-size: 12px;
+      color: var(--gray-400);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .footer-right a:hover { color: var(--gray-700); }
+
+    /* Mapbox overrides */
+    .mapboxgl-ctrl-logo { display: none !important; }
+    .mapboxgl-ctrl-attrib { display: none !important; }
+  </style>
+</head>
+
+<body>
+
+  <!-- ── NAVBAR ── -->
+  <header class="navbar">
+    <a href="home.html" class="nav-logo">
+      <div class="nav-logo-icon">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zm-7 3a4 4 0 110 8 4 4 0 010-8zm0 10c2.67 0 8 1.34 8 4v1H4v-1c0-2.66 5.33-4 8-4z"/>
+        </svg>
+      </div>
+      UniBuy
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="home.html">Home</a></li>
+      <li><a href="marketplace.html">Marketplace</a></li>
+      <li><a href="sell.html">Sell</a></li>
+    </ul>
+
+    <div class="nav-search">
+      <i class="fas fa-search"></i>
+      <input type="text" placeholder="Search by campus or item..." />
+    </div>
+
+    <div class="nav-actions">
+      <button class="icon-btn" title="Wishlist">
+        <i class="far fa-heart"></i>
+      </button>
+      <button class="icon-btn" title="Messages">
+        <i class="far fa-comment-dots"></i>
+        <span class="notif-dot"></span>
+      </button>
+      <button class="post-btn">
+        <i class="fas fa-plus"></i> Post Item
+      </button>
+      <div class="nav-avatar">
+        <img src="./assets/svg/profile 2.svg" alt="Profile" onerror="this.style.display='none';this.parentElement.style.background='#BBCB2E';" />
+        <span class="avatar-online"></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── MAIN BODY ── -->
+  <div class="page-body">
+
+    <!-- LEFT PANEL -->
+    <aside class="left-panel">
+
+      <!-- Active Meeting Card -->
+      <div class="meeting-card">
+        <div class="meeting-card-top">
+          <span class="active-badge">Active Meeting</span>
+          <button class="meeting-menu-btn">
+            <i class="fas fa-ellipsis-v"></i>
+          </button>
+        </div>
+
+        <div class="meeting-item-row">
+          <div class="item-thumb">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 2a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6H6zm7 1.5L18.5 9H13V3.5zM8 13h8v1H8v-1zm0 3h8v1H8v-1zm0-6h3v1H8v-1z"/>
+            </svg>
+          </div>
+          <div class="item-info">
+            <h3>Organic Chemistry:<br>Structure &amp; Function</h3>
+            <span class="item-price">₵45.00</span>
+          </div>
+        </div>
+
+        <div class="meeting-location">
+          <i class="fas fa-map-marker-alt"></i>
+          <div>
+            <strong>Prempeh Library</strong>
+            <span>Main Library Entrances</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Safe Meeting Protocol Card -->
+      <div class="protocol-card">
+        <div class="protocol-title">
+          <i class="fas fa-shield-alt"></i>
+          Safe Meeting Protocol
+        </div>
+
+        <div class="protocol-item">
+          <div class="protocol-radio"></div>
+          <div class="protocol-item-text">
+            <strong>Public Space</strong>
+            <span>Always meet in daylight &amp; high-traffic areas.</span>
+          </div>
+        </div>
+
+        <div class="protocol-item">
+          <div class="protocol-radio"></div>
+          <div class="protocol-item-text">
+            <strong>Inspect First</strong>
+            <span>Check the item quality before paying.</span>
+          </div>
+        </div>
+
+        <div class="protocol-item">
+          <div class="protocol-radio"></div>
+          <div class="protocol-item-text">
+            <strong>Secure Pay</strong>
+            <span>Use UniBuy Pay or exact cash only.</span>
+          </div>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- MAP AREA -->
+    <div style="position:relative; overflow:hidden;">
+      <div id="map"></div>
+
+      <!-- Map zoom + controls -->
+      <div class="map-controls">
+        <button class="map-ctrl-btn" onclick="map.zoomIn()" title="Zoom in">+</button>
+        <button class="map-ctrl-btn" onclick="map.zoomOut()" title="Zoom out">−</button>
+        <button class="map-ctrl-btn locate" title="My location">
+          <i class="fas fa-location-arrow"></i>
+        </button>
+        <button class="map-ctrl-btn expand" title="Fullscreen">
+          <i class="fas fa-expand-alt"></i>
+        </button>
+      </div>
+
+      <!-- Safe Zone Label -->
+      <div class="map-safe-zone-label">
+        <i class="fas fa-shield-alt"></i>
+        LIBRARY SQUARE SAFE ZONE
+      </div>
+    </div>
+
+  </div><!-- /page-body -->
+
+  <!-- ── BOTTOM STATUS CARD ── -->
+  <div class="status-bar">
+    <div class="status-card">
+      <div class="status-card-top">
+        <div class="status-user">
+          <div class="status-avatar">
+            <img src="./assets/svg/profile 2.svg" alt="Marcus"
+              onerror="this.style.display='none';" />
+            <span class="status-avatar-dot"></span>
+          </div>
+          <div class="status-user-info">
+            <h4>Marcus is on the way</h4>
+            <div class="status-meta">
+              <span class="verified-tag">Verified Student</span>
+              <span class="eta-tag">
+                <i class="far fa-clock"></i> Arriving in 4 mins
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="status-actions">
+          <button class="action-btn-outline">
+            <i class="far fa-comment-dots"></i> Chat
+          </button>
+          <button class="action-btn-call" title="Call">
+            <i class="fas fa-phone"></i>
+          </button>
+          <button class="arrived-btn">
+            I've Arrived <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="status-card-bottom">
+        <span class="status-note">
+          <i class="fas fa-info-circle"></i>
+          Don't hand over money until you've checked the item quality.
+        </span>
+        <a href="#" class="meeting-guide-link">View Meeting Points Guide</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Campus SOS -->
+  <button class="sos-btn">
+    <i class="fas fa-exclamation-triangle"></i> Campus SOS
+  </button>
+
+  <!-- ── FOOTER ── -->
+  <footer class="site-footer">
+    <div class="footer-left">
+      <span>© 2026 UniBuy SafeExchange™</span>
+      <span class="footer-encrypt">
+        <i class="fas fa-lock"></i> End-to-End Encryption Active
+      </span>
+    </div>
+    <div class="footer-right">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Meetup</a>
+      <a href="#">Emergency Protocol</a>
+    </div>
+  </footer>
+
+  <script>
+    mapboxgl.accessToken = 'YOUR_MAPBOX_TOKEN';
+
+    let map;
+
+    try {
+      map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/light-v11',
+        center: [-0.187, 5.603],
+        zoom: 15.5
+      });
+
+      map.on('load', () => {
+        // Safe zone circle
+        map.addSource('safe-zone', {
+          type: 'geojson',
+          data: {
+            type: 'Feature',
+            geometry: { type: 'Point', coordinates: [-0.187, 5.603] }
+          }
+        });
+
+        map.addLayer({
+          id: 'safe-zone-fill',
+          type: 'circle',
+          source: 'safe-zone',
+          paint: {
+            'circle-radius': 60,
+            'circle-color': 'rgba(0,139,255,0.07)',
+            'circle-stroke-width': 2,
+            'circle-stroke-color': 'rgba(0,139,255,0.3)'
+          }
+        });
+
+        // Buyer marker (you)
+        const buyerEl = document.createElement('div');
+        buyerEl.style.cssText = `
+          width:40px;height:40px;border-radius:50%;
+          border:3px solid #BBCB2E;background:#f7fee7;
+          overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,0.2);
+          display:flex;align-items:center;justify-content:center;
+          font-size:20px;
+        `;
+        buyerEl.innerHTML = '🧑';
+
+        new mapboxgl.Marker({ element: buyerEl })
+          .setLngLat([-0.1895, 5.6015])
+          .setPopup(new mapboxgl.Popup({ offset: 25 }).setHTML('<strong>You (Buyer)</strong>'))
+          .addTo(map);
+
+        // Seller marker (Marcus)
+        const sellerEl = document.createElement('div');
+        sellerEl.style.cssText = `
+          width:48px;height:48px;border-radius:50%;
+          border:3px solid #008BFF;background:white;
+          overflow:hidden;box-shadow:0 4px 14px rgba(0,139,255,0.3);
+          display:flex;flex-direction:column;align-items:center;justify-content:center;
+        `;
+        sellerEl.innerHTML = `
+          <div style="font-size:22px;">👤</div>
+          <div style="font-size:8px;font-weight:700;color:#008BFF;letter-spacing:0.3px;margin-top:-2px;">MARCUS</div>
+        `;
+
+        new mapboxgl.Marker({ element: sellerEl })
+          .setLngLat([-0.187, 5.603])
+          .setPopup(new mapboxgl.Popup({ offset: 30 }).setHTML('<strong>Marcus (Seller)</strong><br><span style="font-size:12px;color:#6b7280;">Arriving in 4 mins</span>'))
+          .addTo(map);
+
+        // Animated dashed route
+        const routeCoords = [
+          [-0.1895, 5.6015],
+          [-0.1888, 5.6018],
+          [-0.1882, 5.6022],
+          [-0.1876, 5.6028],
+          [-0.187,  5.603]
+        ];
+
+        map.addSource('route', {
+          type: 'geojson',
+          data: {
+            type: 'Feature',
+            geometry: { type: 'LineString', coordinates: routeCoords }
+          }
+        });
+
+        map.addLayer({
+          id: 'route-line',
+          type: 'line',
+          source: 'route',
+          layout: { 'line-join': 'round', 'line-cap': 'round' },
+          paint: {
+            'line-color': '#008BFF',
+            'line-width': 5,
+            'line-dasharray': [2, 2],
+            'line-opacity': 0.85
+          }
+        });
+      });
+
+    } catch (e) {
+      // No valid token — show a styled fallback map
+      const mapEl = document.getElementById('map');
+      mapEl.style.background = 'linear-gradient(160deg, #e8f4f8 0%, #d1e8f0 40%, #c8e0ec 100%)';
+      mapEl.innerHTML = `
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;">
+          <div style="font-size:48px;">🗺️</div>
+          <p style="font-family:'Inter',sans-serif;font-size:14px;color:#6b7280;font-weight:600;">
+            Map loads with a valid Mapbox token
+          </p>
+          <p style="font-family:'Inter',sans-serif;font-size:12px;color:#9ca3af;">
+            Replace <code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;">YOUR_MAPBOX_TOKEN</code> in the script
+          </p>
+        </div>
+
+        <!-- Fake campus map elements for preview -->
+        <div style="position:absolute;top:15%;left:42%;width:200px;height:140px;background:rgba(200,220,240,0.5);border-radius:8px;border:1px solid #b3cfe0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#6b7280;letter-spacing:1px;">CENTRAL LIBRARY</div>
+        <div style="position:absolute;top:62%;left:8%;width:140px;height:80px;background:rgba(200,220,240,0.4);border-radius:8px;border:1px solid #b3cfe0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#6b7280;letter-spacing:1px;">DORMITORY</div>
+        <div style="position:absolute;top:10%;left:6%;width:120px;height:90px;background:rgba(200,220,240,0.4);border-radius:8px;border:1px solid #b3cfe0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#6b7280;letter-spacing:1px;text-align:center;">SCIENCE HALL</div>
+
+        <!-- Dashed route -->
+        <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;" xmlns="http://www.w3.org/2000/svg">
+          <path d="M 160 520 Q 300 400 520 300 T 780 180" stroke="#008BFF" stroke-width="6" stroke-dasharray="14,10" stroke-linecap="round" fill="none" opacity="0.8"/>
+        </svg>
+
+        <!-- Seller dot -->
+        <div style="position:absolute;top:22%;left:60%;transform:translate(-50%,-50%);">
+          <div style="width:48px;height:48px;border-radius:50%;background:white;border:3px solid #008BFF;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,139,255,0.3);">
+            <span style="font-size:20px;">👤</span>
+            <span style="font-size:7px;font-weight:800;color:#008BFF;">MARCUS</span>
+          </div>
+        </div>
+      `;
+    }
+  </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9e47943a3c67bd1a',t:'MTc3NDg3ODU4MA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

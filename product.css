@@ -1,0 +1,183 @@
+/* PRODUCT DETAIL PAGE - product.css */
+
+.product-page .product-container {
+  max-width: 1150px;
+  margin: 30px auto;
+  padding: 0 40px;
+}
+
+.breadcrumb {
+  font-size: 13px;
+  color: #757575;
+  margin-bottom: 25px;
+}
+
+.product-main-grid {
+  display: grid;
+  grid-template-columns: 1.65fr 1fr;
+  gap: 40px;
+}
+
+.main-image-box {
+  background: #f8f8f8;
+  border-radius: 16px;
+  height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.main-image-box img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+}
+
+.thumbnail-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.thumbnail-row img {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 12px;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.thumbnail-row img:hover {
+  border-color: #BBCB2E;
+}
+
+/* Sidebar */
+.sidebar-card {
+  background: white;
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  margin-bottom: 24px;
+}
+
+.product-tags {
+  margin-bottom: 12px;
+}
+
+.featured-tag, .condition-tag {
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.featured-tag { background: #fff9c4; color: #f57f17; }
+.condition-tag { background: #e8f5e9; color: #2e7d32; }
+
+.price-section {
+  margin: 20px 0;
+}
+
+.current-price {
+  font-size: 38px;
+  font-weight: 900;
+  color: #1a1a1a;
+}
+
+.original-price {
+  text-decoration: line-through;
+  color: #999;
+  font-size: 15px;
+  margin-left: 12px;
+}
+
+.chat-with-seller {
+  width: 100%;
+  background: #BBCB2E;
+  color: #000;
+  border: none;
+  padding: 16px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.save-listing {
+  width: 100%;
+  background: white;
+  border: 1px solid #ddd;
+  padding: 14px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Seller info and meetup card styles can be expanded if needed */
+
+.more-in-category {
+  margin-top: 80px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.more-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 24px;
+}
+
+.more-item img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+/* Button & Wishlist styles */
+.chat-with-seller {
+  width: 100%;
+  background: #BBCB2E;
+  color: #000;
+  border: none;
+  padding: 16px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 12px;
+}
+
+.save-listing {
+  width: 100%;
+  background: white;
+  border: 1.5px solid #e2e8f0;
+  padding: 14px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.save-listing:hover {
+  border-color: #BBCB2E;
+}
+
+.payment-note {
+  text-align: center;
+  font-size: 12px;
+  color: #757575;
+  margin-top: 12px;
+}
+
+/* Active wishlist in navbar */
+.active-wishlist i {
+  color: #ef4444 !important;
+}

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>UniBuy - Seller Dashboard</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="sell.css">
+</head>
+<body class="sell-page">
+
+  <div class="sell-layout">
+
+    <!-- Sidebar -->
+    <aside class="sell-sidebar">
+      <div class="sell-sidebar-logo">
+        <img src="./assets/images/logo.png" alt="UniBuy" class="logo-img">
+        <span>UniBuy</span>
+      </div>
+
+      <nav class="sell-nav">
+        <a href="sell.html" class="sell-nav-item active">
+          <i class="fas fa-th-large"></i> Overview
+        </a>
+        <a href="#" class="sell-nav-item">
+          <i class="fas fa-list"></i> My Listings
+        </a>
+        <a href="tracking order.html" class="sell-nav-item">
+          <i class="fas fa-comment-dots"></i> Messages
+        </a>
+        <a href="profile.html" class="sell-nav-item">
+          <i class="fas fa-user"></i> Profile
+        </a>
+        <a href="#" class="sell-nav-item">
+          <i class="fas fa-cog"></i> Settings
+        </a>
+      </nav>
+
+      <a href="index.html" class="sell-logout">
+        <i class="fas fa-sign-out-alt"></i> Logout
+      </a>
+    </aside>
+
+    <!-- Main -->
+    <div class="sell-main-wrap">
+
+      <!-- Top Nav Bar -->
+      <header class="navbar">
+        <div class="nav-container">
+          <nav class="main-nav">
+            <a href="home.html" class="nav-link">Home</a>
+            <a href="marketplace.html" class="nav-link">Marketplace</a>
+            <a href="sell.html" class="nav-link active">Sell</a>
+          </nav>
+          <div class="nav-search">
+            <input type="text" placeholder="Search by campus or item..." />
+          </div>
+          <div class="user-actions">
+            <button class="icon-btn" title="Wishlist"><i class="far fa-heart"></i></button>
+            <button class="icon-btn" title="Messages">
+              <i class="far fa-comment-dots"></i>
+              <span class="dot"></span>
+            </button>
+            <button class="post-btn"><i class="fas fa-plus"></i> Post Item</button>
+            <div class="profile">
+              <img src="./assets/svg/profile 2.svg" alt="Profile" class="avatar" />
+              <span class="online-dot"></span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Dashboard Content -->
+      <main class="sell-content">
+
+        <!-- Page Title -->
+        <div class="sell-page-title">
+          <div>
+            <h1>Seller Dashboard</h1>
+            <p>Welcome back, Jaden! Here's what's happening with your store today.</p>
+          </div>
+          <button class="sell-post-btn">
+            <i class="fas fa-plus"></i> Post New Item
+          </button>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="sell-stats-grid">
+          <div class="sell-stat-card">
+            <div class="sell-stat-top blue">
+              <i class="fas fa-dollar-sign"></i>
+              <span class="sell-stat-badge green">+12.5%</span>
+            </div>
+            <p class="sell-stat-label">TOTAL SALES</p>
+            <h2 class="sell-stat-value">₵1,248.50</h2>
+          </div>
+          <div class="sell-stat-card">
+            <div class="sell-stat-top blue">
+              <i class="fas fa-box"></i>
+              <span class="sell-stat-badge green">+2 new</span>
+            </div>
+            <p class="sell-stat-label">ACTIVE LISTINGS</p>
+            <h2 class="sell-stat-value">12</h2>
+          </div>
+          <div class="sell-stat-card">
+            <div class="sell-stat-top red">
+              <i class="fas fa-comment"></i>
+              <span class="sell-stat-badge red">-30% response</span>
+            </div>
+            <p class="sell-stat-label">PENDING MESSAGES</p>
+            <h2 class="sell-stat-value">5</h2>
+          </div>
+        </div>
+
+        <!-- Chart + Tips -->
+        <div class="sell-mid-grid">
+
+          <!-- Sales Chart -->
+          <div class="sell-chart-card">
+            <div class="sell-chart-header">
+              <h3>Sales Velocity</h3>
+              <button class="sell-view-reports">View Reports</button>
+            </div>
+            <p class="sell-chart-sub">Estimated revenue based on campus pickup completions.</p>
+            <div class="sell-chart-wrap">
+              <canvas id="salesChart"></canvas>
+            </div>
+          </div>
+
+          <!-- Selling Tips -->
+          <div class="sell-tips-card">
+            <h3><i class="far fa-lightbulb"></i> Selling Tips</h3>
+
+            <div class="sell-tip">
+              <p class="sell-tip-title">GOLDEN HOUR</p>
+              <p class="sell-tip-body">Listings posted on <strong>Sunday evenings</strong> get 40% more campus views.</p>
+            </div>
+
+            <div class="sell-tip">
+              <p class="sell-tip-title">QUICK SALE TIP</p>
+              <p class="sell-tip-body">Items with at least 3 photos sell 2x faster than those with one.</p>
+            </div>
+
+            <button class="sell-academy-btn">Visit Seller Academy</button>
+          </div>
+
+        </div>
+
+        <!-- Recent Listings Table -->
+        <div class="sell-table-card">
+          <div class="sell-table-header">
+            <h3>Recent Listings</h3>
+            <div class="sell-table-actions">
+              <button class="sell-table-btn">Filter</button>
+              <button class="sell-table-btn">Export</button>
+            </div>
+          </div>
+
+          <table class="sell-table">
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Status</th>
+                <th class="text-right">Engagement</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="sell-item-cell">
+                    <img src="./assets/images/MacBook Air M2 - Pristine (1).webp" alt="MacBook Air" />
+                    <span>MacBook Air M1 (2020)</span>
+                  </div>
+                </td>
+                <td>Electronics</td>
+                <td class="sell-price">₵650</td>
+                <td><span class="sell-status active">ACTIVE</span></td>
+                <td class="text-right sell-engagement"><i class="far fa-eye"></i> 124 page views</td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="sell-item-cell">
+                    <img src="./assets/images/Calculus.webp" alt="Organic Chem Textbook" />
+                    <span>Organic Chem Textbook</span>
+                  </div>
+                </td>
+                <td>Books</td>
+                <td class="sell-price">₵45</td>
+                <td><span class="sell-status pending">PENDING</span></td>
+                <td class="text-right sell-engagement"><i class="far fa-eye"></i> 89 page views</td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="sell-item-cell">
+                    <img src="./assets/images/Standard Lamp with USB.webp" alt="Dorm Room LED Strips" />
+                    <span>Dorm Room LED Strips</span>
+                  </div>
+                </td>
+                <td>Home</td>
+                <td class="sell-price">₵15</td>
+                <td><span class="sell-status sold">SOLD</span></td>
+                <td class="text-right sell-engagement"><i class="far fa-eye"></i> 245 page views</td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="sell-item-cell">
+                    <img src="./assets/images/Sony WH-1000XM5 Headphones.webp" alt="Noise Cancelling Headphones" />
+                    <span>Noise Cancelling Headphones</span>
+                  </div>
+                </td>
+                <td>Electronics</td>
+                <td class="sell-price">₵120</td>
+                <td><span class="sell-status active">ACTIVE</span></td>
+                <td class="text-right sell-engagement"><i class="far fa-eye"></i> 56 page views</td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="sell-item-cell">
+                    <img src="./assets/images/IKEA Malm Desk.webp" alt="Mini Desk Fan" />
+                    <span>Mini Desk Fan</span>
+                  </div>
+                </td>
+                <td>Home</td>
+                <td class="sell-price">₵12</td>
+                <td><span class="sell-status active">ACTIVE</span></td>
+                <td class="text-right sell-engagement"><i class="far fa-eye"></i> 32 page views</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="sell-table-footer">
+            <span>Showing 5 of 12 active listings</span>
+            <div class="sell-pagination">
+              <button class="sell-page-btn">Previous</button>
+              <button class="sell-page-btn">Next</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Help Banner -->
+        <div class="sell-help-banner">
+          <div>
+            <h3>Need help managing your sales?</h3>
+            <p>Join our Student Seller community or chat with a campus ambassador for pro tips on maximizing your earnings.</p>
+          </div>
+          <div class="sell-help-actions">
+            <button class="sell-help-outline">Contact Support</button>
+            <button class="sell-help-blue">Join Community</button>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="sell-footer">
+          <div class="sell-footer-brand">
+            <div class="sell-footer-logo">
+              <img src="./assets/images/logo.png" alt="UniBuy" class="logo-img">
+              <span>UniBuy</span>
+            </div>
+            <p>The exclusive marketplace for verified university students. Buy, sell, and trade safely within your campus community.</p>
+            <div class="sell-footer-social">
+              <i class="fab fa-facebook"></i>
+              <i class="fab fa-instagram"></i>
+              <i class="fab fa-twitter"></i>
+              <i class="fab fa-linkedin"></i>
+            </div>
+          </div>
+          <div class="sell-footer-col">
+            <h4>SHOP</h4>
+            <ul>
+              <li>Textbooks</li>
+              <li><a href="product.html">Electronics</a></li>
+              <li>Dorm Decor</li>
+              <li>Campus Gear</li>
+            </ul>
+          </div>
+          <div class="sell-footer-col">
+            <h4>SUPPORT</h4>
+            <ul> 
+             <li>Help Center</li>
+             <li><a href="map.html">Safe Meetups</a></li>
+             <li>Trust &amp; Safety</li>
+             <li>Refund Policy</li>
+            </ul>
+          </div>
+          <div class="sell-footer-col">
+            <h4>COMPANY</h4>
+            <ul>
+             <li>About UniBuy</li>
+             <li>Careers</li>
+             <li>Student Ambassadors</li>
+             <li>Privacy Policy</li>
+             </ul>
+          </div>
+        </footer>
+
+        <div class="sell-footer-bottom">
+          <p>© 2026 UniBuy Inc. All rights reserved.</p>
+          <p>&#127760; Global Campus Network &nbsp;•&nbsp; &#10003; Verified Student Only Platform</p>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <script>
+    const ctx = document.getElementById('salesChart');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+        datasets: [{
+          label: 'Sales',
+          data: [120, 350, 210, 480, 420, 820, 680],
+          backgroundColor: '#BBCB2E',
+          borderRadius: 6,
+          barThickness: 32
+        }]
+      },
+      options: {
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          y: {
+            grid: { color: '#F3F4F6' },
+            ticks: { font: { size: 10 }, color: '#94a3b8' }
+          },
+          x: {
+            grid: { display: false },
+            ticks: { font: { size: 10 }, color: '#94a3b8' }
+          }
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>

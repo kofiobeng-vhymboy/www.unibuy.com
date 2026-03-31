@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>UniBuy - Home</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Aclonica&family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="home-page">
+
+  <!-- Top Navigation -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <img src="./assets/images/logo.png" alt="UniBuy" class="logo-img">
+        <span>UniBuy</span>
+      </div>
+      <nav class="main-nav">
+        <a href="home.html" class="nav-link active">Home</a>
+        <a href="marketplace.html" class="nav-link">Marketplace</a>
+        <a href="sell.html" class="nav-link">Sell</a>
+      </nav>
+      <div class="nav-search">
+        <input type="text" placeholder="Search by campus or item..." />
+      </div>
+      <div class="user-actions">
+        <button class="icon-btn" title="Wishlist"><i class="far fa-heart"></i></button>
+        <button class="icon-btn" title="Messages">
+          <i class="far fa-comment-dots"></i>
+          <span class="dot"></span>
+        </button>
+        <button class="post-btn"><i class="fas fa-plus"></i> Post Item</button>
+        <div class="profile">
+          <img src="./assets/svg/profile 2.svg" alt="Profile" class="avatar" />
+          <span class="online-dot"></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">✦ Verified Campus Marketplace</div>
+
+      <!-- Typing animation targets -->
+      <h1 id="hero-heading"></h1>
+      <p class="subtitle" id="hero-subtitle"></p>
+
+      <div class="hero-search-box">
+        <div class="search-wrapper">
+          <input type="text" placeholder="What are you looking for?" class="main-search-input" />
+          <div class="search-divider"></div>
+          <div class="location-tag">
+            <i class="fas fa-map-marker-alt"></i> KNUST, Kumasi
+          </div>
+        </div>
+        <button class="search-btn">Search</button>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-item"><i class="far fa-clock"></i><span>500+ items added today</span></div>
+        <div class="stat-item"><i class="fas fa-map-pin"></i><span>42 Campuses Live</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trending Categories -->
+  <section class="trending-categories">
+    <div class="section-header">
+      <h2 class="section-title-upper">TRENDING CATEGORIES</h2>
+      <a href="#" class="view-all-link">View All Categories →</a>
+    </div>
+    <div class="category-pills">
+      <button class="pill"><i class="fas fa-book-open"></i> Textbooks</button>
+      <button class="pill"><i class="fas fa-laptop-code"></i> Electronics</button>
+      <button class="pill"><i class="fas fa-couch"></i> Dorm Decor</button>
+      <button class="pill"><i class="fas fa-graduation-cap"></i> Campus Gear</button>
+      <button class="pill"><i class="fas fa-bicycle"></i> Bicycles</button>
+    </div>
+  </section>
+
+  <!-- Featured Deals -->
+  <section class="featured-deals-section">
+    <div class="section-header">
+      <div class="header-text">
+        <h2>Featured Deals</h2>
+        <p>High-demand items from top sellers this week.</p>
+      </div>
+      <div class="carousel-arrows">
+        <button class="arrow-btn"><i class="fas fa-chevron-left"></i></button>
+        <button class="arrow-btn"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </div>
+    <div class="deals-container">
+      <div class="deal-card">
+        <div class="price-badge">₵4500</div>
+        <img src="./assets/images/MacBook Air M2 - Pristine (1).webp" alt="MacBook Air M2" class="deal-image">
+        <div class="deal-details">
+          <span class="campus-tag"><i class="fas fa-map-marker-alt"></i> KNUST, Kumasi</span>
+          <h3>MacBook Air M2 - Pristine</h3>
+          <a href="#" class="view-link">View Details →</a>
+        </div>
+      </div>
+      <div class="deal-card">
+        <div class="price-badge">₵240</div>
+        <img src="./assets/images/Sony WH-1000XM5 Headphones.webp" alt="Sony Headphones" class="deal-image">
+        <div class="deal-details">
+          <span class="campus-tag"><i class="fas fa-map-marker-alt"></i> UG, Legon-Accra</span>
+          <h3>Sony WH-1000XM5</h3>
+          <a href="product.html" class="view-link">View Details →</a>
+        </div>
+      </div>
+      <div class="deal-card">
+        <div class="price-badge">₵45</div>
+        <img src="./assets/images/Vintage Levi Denim Jacket.webp" alt="Denim Jacket" class="deal-image">
+        <div class="deal-details">
+          <span class="campus-tag"><i class="fas fa-map-marker-alt"></i> KTU, Kumasi</span>
+          <h3>Vintage Levi's Denim Jacket</h3>
+          <a href="#" class="view-link">View Details →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recommended for You -->
+  <section class="recommended-section">
+    <div class="rec-header">
+      <div class="rec-header-left">
+        <div class="rec-title-row">
+          <img src="./assets/svg/profile 2.svg" alt="User" class="tiny-avatar" />
+          <h2>Recommended for You</h2>
+        </div>
+        <p class="rec-subtitle">Based on your activity at KNUST, Kumasi</p>
+      </div>
+      <div class="filter-tabs">
+        <button class="tab active">Newest</button>
+        <button class="tab">Nearby</button>
+        <button class="tab">Price</button>
+      </div>
+    </div>
+
+    <div class="recommended-grid">
+      <div class="product-card">
+        <div class="product-img-wrapper">
+          <img src="./assets/images/Calculus.webp" alt="Calculus Book" class="product-img">
+          <span class="category-badge">Books</span>
+        </div>
+        <div class="product-info">
+          <div class="product-name-price">
+            <span class="product-name">Calculus: Early Transcendentals</span>
+            <span class="product-price">₵70</span>
+          </div>
+          <span class="product-campus"><i class="fas fa-map-marker-alt"></i> KNUST</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img-wrapper">
+          <img src="./assets/images/Mini Fridge (Energy Star).webp" alt="Mini Fridge" class="product-img">
+          <span class="category-badge">Dorm</span>
+        </div>
+        <div class="product-info">
+          <div class="product-name-price">
+            <span class="product-name">Mini Fridge (Energy Star)</span>
+            <span class="product-price">₵1250</span>
+          </div>
+          <span class="product-campus"><i class="fas fa-map-marker-alt"></i> KNUST</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img-wrapper">
+          <img src="./assets/images/iPad Air 4th Gen+ Pencil.webp" alt="iPad Air" class="product-img">
+          <span class="category-badge">Electronics</span>
+        </div>
+        <div class="product-info">
+          <div class="product-name-price">
+            <span class="product-name">iPad Air 4th Gen + Pencil</span>
+            <span class="product-price">₵1650</span>
+          </div>
+          <span class="product-campus"><i class="fas fa-map-marker-alt"></i> KNUST</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img-wrapper">
+          <img src="./assets/images/Acoustic Guitar.webp" alt="Acoustic Guitar" class="product-img">
+          <span class="category-badge">Music</span>
+        </div>
+        <div class="product-info">
+          <div class="product-name-price">
+            <span class="product-name">Acoustic Guitar (Fender)</span>
+            <span class="product-price">₵126</span>
+          </div>
+          <span class="product-campus"><i class="fas fa-map-marker-alt"></i> KNUST</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img-wrapper">
+          <img src="./assets/images/Standard Lamp with USB.webp" alt="Standard Lamp" class="product-img">
+          <span class="category-badge">Decor</span>
+        </div>
+        <div class="product-info">
+          <div class="product-name-price">
+            <span class="product-name">Standard Lamp with USB</span>
+            <span class="product-price">₵110</span>
+          </div>
+          <span class="product-campus"><i class="fas fa-map-marker-alt"></i> KNUST</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img-wrapper">
+          <img src="./assets/images/Hydro Flask 32oz.webp" alt="Hydro Flask" class="product-img">
+          <span class="category-badge">Lifestyle</span>
+        </div>
+        <div class="product-info">
+          <div class="product-name-price">
+            <span class="product-name">Hydro Flask 32oz (Blue)</span>
+            <span class="product-price">₵25</span>
+          </div>
+          <span class="product-campus"><i class="fas fa-map-marker-alt"></i> KNUST</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img-wrapper">
+          <img src="./assets/images/IKEA Malm Desk.webp" alt="IKEA Desk" class="product-img">
+          <span class="category-badge">Furniture</span>
+        </div>
+        <div class="product-info">
+          <div class="product-name-price">
+            <span class="product-name">IKEA Malm Desk - Oak</span>
+            <span class="product-price">₵115</span>
+          </div>
+          <span class="product-campus"><i class="fas fa-map-marker-alt"></i> KNUST</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img-wrapper">
+          <img src="./assets/images/Chemistry Lab Coat.webp" alt="Lab Coat" class="product-img">
+          <span class="category-badge">Supplies</span>
+        </div>
+        <div class="product-info">
+          <div class="product-name-price">
+            <span class="product-name">Chemistry Lab Coat (Large)</span>
+            <span class="product-price">₵70</span>
+          </div>
+          <span class="product-campus"><i class="fas fa-map-marker-alt"></i> KNUST</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="browse-more">
+      <a href="marketplace.html">
+        <button class="browse-btn">Browse Entire Marketplace</button>
+      </a>
+    </div>
+  </section>
+
+  <!-- Trust / Safety Banner -->
+  <section class="trust-banner">
+    <div class="trust-content">
+      <div class="trust-text">
+        <div class="trust-badge">UniBuy Guarantee</div>
+        <h2>Safe Meetups,<br>Secure Deals.</h2>
+        <p>
+          Every user is verified with a university email. We suggest safe on-campus
+          exchange zones and provide secure in-app payments.
+        </p>
+        <div class="trust-buttons">
+          <button class="trust-btn primary">Learn More</button>
+          <button class="trust-btn outline">See Safe Zones</button>
+        </div>
+      </div>
+      <div class="trust-testimonial-card">
+        <div class="trust-user-info">
+          <img src="./assets/svg/profile 2.svg" alt="Sarah T." class="trust-avatar" />
+          <div>
+            <strong>Sarah T.</strong>
+            <span>Verified Seller • 5.0 Rating</span>
+          </div>
+        </div>
+        <p class="trust-quote">
+          "Sold my old lab equipment in under 2 hours! So much safer than meeting strangers off-campus."
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="./assets/images/logo.png" alt="UniBuy" class="logo-img">
+          <span>UniBuy</span>
+        </div>
+        <p>
+          The exclusive marketplace for verified university students.
+          Buy, sell, and trade safely within your campus community.
+        </p>
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <div class="footer-column">
+          <h4>SHOP</h4>
+          <ul>
+            <li><a href="#">Textbooks</a></li>
+            <li><a href="#">Electronics</a></li>
+            <li><a href="#">Dorm Decor</a></li>
+            <li><a href="#">Campus Gear</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>SUPPORT</h4>
+          <ul>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="map.html">Safe Meetups</a></li>
+            <li><a href="#">Trust & Safety</a></li>
+            <li><a href="#">Refund Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>COMPANY</h4>
+          <ul>
+            <li><a href="#">About UniBuy</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Student Ambassadors</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 UniBuy Inc. All rights reserved.</p>
+      <p>&#127760; Global Campus Network &nbsp;•&nbsp; &#10003; Verified Student Only Platform</p>
+    </div>
+  </footer>
+
+  <!-- Typing animation script -->
+  <script src="typing.js"></script>
+
+</body>
+</html>

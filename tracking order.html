@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UniBuy &mdash; Track Your Purchase</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="tracking order.css" />
+</head>
+<body>
+
+  <!-- ========== NAVIGATION ========== -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <img src="./assets/images/logo.png" alt="UniBuy" class="logo-img">
+        <span>UniBuy</span>
+      </div>
+      <nav class="main-nav">
+        <a href="home.html" class="nav-link">Home</a>
+        <a href="marketplace.html" class="nav-link">Marketplace</a>
+        <a href="sell.html" class="nav-link">Sell</a>
+      </nav>
+      <div class="nav-search">
+        <input type="text" placeholder="Search by campus or item..." />
+      </div>
+      <div class="user-actions">
+        <button class="icon-btn" title="Wishlist"><i class="far fa-heart"></i></button>
+        <button class="icon-btn" title="Messages">
+          <i class="far fa-comment-dots"></i>
+          <span class="dot"></span>
+        </button>
+        <button class="post-btn"><i class="fas fa-plus"></i> Post Item</button>
+        <div class="profile">
+          <img src="./assets/svg/profile 2.svg" alt="Profile" class="avatar" />
+          <span class="online-dot"></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========== PAGE CONTENT ========== -->
+  <main class="main-content">
+
+    <!-- Order heading -->
+    <section class="order-heading">
+      <p class="order-number">ORDER #UB-8829-XQ</p>
+      <h1 class="page-title">Track Your Purchase</h1>
+      <p class="status-line">
+        You're currently in the <strong class="status-active">Meeting Arranged</strong> phase.
+        Meet Sarah at the agreed location to pick up your item.
+      </p>
+    </section>
+
+    <!-- Progress stepper -->
+    <div class="stepper" role="list" aria-label="Order progress">
+      <div class="step completed" role="listitem">
+        <div class="step-bubble">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" width="18" height="18">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+        </div>
+        <span class="step-label">Order Confirmed</span>
+      </div>
+
+      <div class="step-line active-line"></div>
+
+      <div class="step current" role="listitem">
+        <div class="step-bubble">2</div>
+        <span class="step-label">Meeting Arranged</span>
+      </div>
+
+      <div class="step-line"></div>
+
+      <div class="step pending" role="listitem">
+        <div class="step-bubble">3</div>
+        <span class="step-label">Item Handed Over</span>
+      </div>
+    </div>
+
+    <!-- Two-column layout -->
+    <div class="content-layout">
+
+      <!-- LEFT: main cards -->
+      <div class="left-col">
+
+        <!-- Meetup location card -->
+        <div class="card location-card">
+          <div class="location-card-top">
+            <span class="pin-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            </span>
+            <span class="verified-tag">Campus Verified</span>
+          </div>
+
+          <!-- Map visual placeholder -->
+          <div class="map-area" role="img" aria-label="Map showing meetup location">
+            <div class="map-overlay-pin">📍</div>
+            <button class="open-map-btn" id="openMapBtn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13">
+                <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+                <polyline points="15 3 21 3 21 9"/>
+                <line x1="10" y1="14" x2="21" y2="3"/>
+              </svg>
+              Open Live Map
+            </button>
+          </div>
+
+          <div class="meetup-details">
+            <div class="detail-row">
+              <div class="detail-icon-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                  <line x1="16" y1="2" x2="16" y2="6"/>
+                  <line x1="8" y1="2" x2="8" y2="6"/>
+                  <line x1="3" y1="10" x2="21" y2="10"/>
+                </svg>
+              </div>
+              <div>
+                <p class="detail-label">Date &amp; Time</p>
+                <p class="detail-value">Monday, Oct 24 &bull; 2:30 PM</p>
+              </div>
+            </div>
+
+            <div class="detail-row">
+              <div class="detail-icon-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+              </div>
+              <div>
+                <p class="detail-label">Location</p>
+                <p class="detail-value">Main Library &ndash; West Entrance Steps</p>
+                <p class="detail-sub">Look for the "UniBuy Meetup" sign</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Safe exchange tip -->
+        <div class="card tip-card">
+          <div class="tip-icon">🛡️</div>
+          <div class="tip-body">
+            <p class="tip-title">Safe Exchange Tip</p>
+            <p class="tip-text">
+              Always inspect the item carefully before finalizing. Use the UniBuy QR code
+              (available after clicking 'Mark Handed Over') to complete the transaction safely.
+            </p>
+          </div>
+        </div>
+
+        <!-- Mark as received CTA -->
+        <div class="card cta-card">
+          <div class="cta-icon-wrap">🛍️</div>
+          <h3 class="cta-heading">At the Meetup?</h3>
+          <p class="cta-subtext">
+            Once you have physically received the item and confirmed its condition,
+            please mark it as received below.
+          </p>
+
+          <button class="mark-received-btn" id="markReceivedBtn">MARK AS RECEIVED</button>
+
+          <p class="payment-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="12" y1="8" x2="12" y2="12"/>
+              <line x1="12" y1="16" x2="12.01" y2="16"/>
+            </svg>
+            Payment is only released to the seller after this action.
+          </p>
+
+          <div class="cta-footer-actions">
+            <button class="report-btn" id="reportBtn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="12" y1="8" x2="12" y2="12"/>
+                <line x1="12" y1="16" x2="12.01" y2="16"/>
+              </svg>
+              Report an Issue
+            </button>
+            <button class="reschedule-btn" id="rescheduleBtn">Reschedule Meetup</button>
+          </div>
+        </div>
+
+      </div><!-- /left-col -->
+
+      <!-- RIGHT: sidebar -->
+      <aside class="right-col">
+
+        <!-- Seller info card -->
+        <div class="card seller-card">
+          <p class="sidebar-section-title">Seller Information</p>
+
+          <div class="seller-profile">
+            <!-- profile_2.svg used as seller avatar -->
+            <div class="seller-avatar-wrap">
+              <img src="./assets/svg/profile 3.svg" alt="James Blankson" class="seller-avatar-img" />
+              <span class="online-dot"></span>
+            </div>
+            <div class="seller-meta">
+              <p class="seller-name">James Blankson</p>
+              <p class="seller-rating">
+                <span class="star">&#9733;</span> 4.9
+                <span class="rating-count">(42 sales)</span>
+              </p>
+            </div>
+          </div>
+
+          <div class="seller-actions">
+            <!-- comment.svg reused for Chat button -->
+            <button class="seller-action-btn" id="chatSellerBtn">
+              <img src="./assets/svg/comment.svg" alt="" class="btn-icon-sm" />
+              Chat
+            </button>
+            <button class="seller-action-btn" id="viewProfileBtn">View Profile</button>
+          </div>
+
+          <!-- Active chat preview -->
+          <div class="active-chats-section">
+            <p class="chats-label">ACTIVE CHATS</p>
+            <div class="chat-preview-row" id="chatPreviewRow" role="button" tabindex="0">
+              <span class="chat-live-dot"></span>
+              <span class="chat-preview-text">"Hey! I'm outside the library now..."</span>
+              <span class="chat-chevron">&#8250;</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Order summary card -->
+        <div class="card order-summary-card">
+          <p class="sidebar-section-title">Order Summary</p>
+
+          <div class="ordered-item">
+            <div class="item-thumb">📚</div>
+            <div class="item-info">
+              <p class="item-name">Macroeconomics: Principles, Applications,</p>
+              <p class="item-condition">Condition: Like New</p>
+              <p class="item-price">&#8373;45.00</p>
+            </div>
+          </div>
+
+          <div class="price-breakdown">
+            <div class="price-line">
+              <span>Price</span>
+              <span>&#8373;45.00</span>
+            </div>
+            <div class="price-line">
+              <span>Campus Fee</span>
+              <span>&#8373;1.50</span>
+            </div>
+            <div class="price-line total-line">
+              <span>Total</span>
+              <span class="total-amount">&#8373;46.50</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Help card -->
+        <div class="card help-card">
+          <div class="help-inner">
+            <!-- profile_3.svg reused as support icon -->
+            <img src="./assets/images/logo.png" alt="" class="help-icon-img" />
+            <div class="help-text">
+              <strong>Need help?</strong><br />
+              Check out our <a href="#" class="help-link">Safe Meetup Guide</a> or
+              contact 24/7 Campus Support.
+            </div>
+          </div>
+        </div>
+
+      </aside><!-- /right-col -->
+
+    </div><!-- /content-layout -->
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+
+      <div class="footer-brand-col">
+        <a href="#" class="brand footer-brand">
+          <div class="brand-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zm-7 3a4 4 0 110 8 4 4 0 010-8zm0 10c2.67 0 8 1.34 8 4v1H4v-1c0-2.66 5.33-4 8-4z"/>
+            </svg>
+          </div>
+          UniBuy
+        </a>
+        <p class="footer-tagline">
+          The exclusive marketplace for verified university students.
+          Buy, sell, and trade safely within your campus community.
+        </p>
+        <div class="social-links">
+          <a href="#" class="social-btn" aria-label="Pinterest">&#9675;</a>
+          <a href="#" class="social-btn" aria-label="Twitter">&#120143;</a>
+          <a href="#" class="social-btn" aria-label="Instagram">&#9634;</a>
+          <a href="#" class="social-btn" aria-label="GitHub">&#9670;</a>
+        </div>
+      </div>
+
+      <div class="footer-link-group">
+        <p class="footer-group-title">SHOP</p>
+        <ul>
+          <li><a href="#">Textbooks</a></li>
+          <li><a href="product.html">Electronics</a></li>
+          <li><a href="#">Dorm Decor</a></li>
+          <li><a href="#">Campus Gear</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-link-group">
+        <p class="footer-group-title">SUPPORT</p>
+        <ul>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="map.html">Safe Meetups</a></li>
+          <li><a href="#">Trust &amp; Safety</a></li>
+          <li><a href="#">Refund Policy</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-link-group">
+        <p class="footer-group-title">COMPANY</p>
+        <ul>
+          <li><a href="#">About UniBuy</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Student Ambassadors</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; 2026 UniBuy Inc. All rights reserved.</span>
+      <div class="footer-bottom-right">
+        <span>&#127760; Global Campus Network</span>
+        <span>&nbsp;•&nbsp; &#10003; Verified Student Only Platform</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast notification -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

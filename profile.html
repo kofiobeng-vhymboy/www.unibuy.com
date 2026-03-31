@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>UniBuy - Profile</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="sell.css">
+  <link rel="stylesheet" href="profile.css">
+</head>
+<body class="profile-page">
+
+  <div class="sell-layout">
+
+    <!-- Sidebar -->
+    <aside class="sell-sidebar">
+      <div class="sell-sidebar-logo">
+        <img src="./assets/images/logo.png" alt="UniBuy" class="logo-img">
+        <span>UniBuy</span>
+      </div>
+      <nav class="sell-nav">
+        <a href="sell.html" class="sell-nav-item">
+          <i class="fas fa-th-large"></i> Overview
+        </a>
+        <a href="#" class="sell-nav-item">
+          <i class="fas fa-list"></i> My Listings
+        </a>
+        <a href="tracking order.html" class="sell-nav-item">
+          <i class="fas fa-comment-dots"></i> Messages
+        </a>
+        <a href="profile.html" class="sell-nav-item active">
+          <i class="fas fa-user"></i> Profile
+        </a>
+        <a href="#" class="sell-nav-item">
+          <i class="fas fa-cog"></i> Settings
+        </a>
+      </nav>
+      <a href="index.html" class="sell-logout">
+        <i class="fas fa-sign-out-alt"></i> Logout
+      </a>
+    </aside>
+
+    <!-- Main Wrap -->
+    <div class="sell-main-wrap">
+
+      <!-- Navbar -->
+      <header class="navbar">
+        <div class="nav-container">
+          <div class="logo">
+            <img src="./assets/images/logo.png" alt="UniBuy" class="logo-img">
+            <span>UniBuy</span>
+          </div>
+          <nav class="main-nav">
+            <a href="home.html" class="nav-link">Home</a>
+            <a href="marketplace.html" class="nav-link">Marketplace</a>
+            <a href="sell.html" class="nav-link">Sell</a>
+          </nav>
+          <div class="nav-search">
+            <input type="text" placeholder="Search by campus or item..." />
+          </div>
+          <div class="user-actions">
+            <button class="icon-btn"><i class="far fa-heart"></i></button>
+            <button class="icon-btn">
+              <i class="far fa-comment-dots"></i>
+              <span class="dot"></span>
+            </button>
+            <button class="post-btn"><i class="fas fa-plus"></i> Post Item</button>
+            <div class="profile">
+              <img src="./assets/svg/profile 2.svg" alt="Profile" class="avatar" />
+              <span class="online-dot"></span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+    <!-- Main -->
+    <main class="pf-main">
+      <div class="pf-content">
+
+        <!-- Profile Header -->
+        <div class="pf-header-card">
+          <div class="pf-header-left">
+            <div class="pf-avatar-wrap">
+              <img src="./assets/svg/profile 2.svg" alt="Kwame Justice" />
+              <button class="pf-camera-btn"><i class="fas fa-camera"></i></button>
+            </div>
+            <div class="pf-header-info">
+              <div class="pf-name-row">
+                <h1>Kwame Justice</h1>
+                <span class="pf-verified-badge">
+                  <i class="fas fa-check-circle"></i> Verified Student
+                </span>
+              </div>
+              <p class="pf-uni-info">
+                <i class="fas fa-graduation-cap"></i> KNUST, Kumasi &bull; Computer Science
+              </p>
+              <div class="pf-stats-row">
+                <div class="pf-stat">
+                  <span class="pf-stat-label">MEMBER SINCE</span>
+                  <strong>Jan 2026</strong>
+                </div>
+                <div class="pf-stat">
+                  <span class="pf-stat-label">SUCCESSFUL DEALS</span>
+                  <strong>42 Transactions</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="pf-header-actions">
+            <button class="pf-btn-outline">View Public Profile</button>
+            <button class="pf-btn-solid">Save Changes</button>
+          </div>
+        </div>
+
+        <!-- 3-column grid: left takes 2, right takes 1 -->
+        <div class="pf-grid">
+
+          <!-- LEFT (col-span-2) -->
+          <div class="pf-col-left">
+
+            <!-- My University -->
+            <section>
+              <h2 class="pf-section-title">My University</h2>
+              <div class="pf-card">
+                <div class="pf-card-row-between">
+                  <div>
+                    <strong class="pf-label-lg">Academic Identity</strong>
+                    <p class="pf-text-muted">Managed via university portal SSO</p>
+                  </div>
+                  <span class="pf-pill-grey">Active</span>
+                </div>
+
+                <div class="pf-two-col">
+                  <div class="pf-field">
+                    <label class="pf-field-label">University Email</label>
+                    <div class="pf-input-icon">
+                      <i class="fas fa-envelope"></i>
+                      <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d8b3f6b2adabacb1bbbdf6b9b6abb9b098abacf6b3b6adabacf6bdbcadf6bfb0">[email&#160;protected]</a></span>
+                    </div>
+                  </div>
+                  <div class="pf-field">
+                    <label class="pf-field-label">Graduation Year</label>
+                    <div class="pf-input-plain">2029 (November)</div>
+                  </div>
+                </div>
+
+                <div class="pf-verify-box">
+                  <i class="fas fa-info-circle pf-verify-icon"></i>
+                  <div class="pf-verify-body">
+                    <div class="pf-verify-top">
+                      <strong>Verification Status</strong>
+                      <button class="pf-reverify-btn">Re-verify</button>
+                    </div>
+                    <p>Your student status was last verified 3 days ago via KNUST SSO. Next routine check in 27 days.</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Payment Methods -->
+            <section>
+              <h2 class="pf-section-title">Payment Methods</h2>
+              <div class="pf-card pf-card-no-pad">
+                <div class="pf-payment-row border-b">
+                  <div class="pf-payment-left">
+                    <div class="pf-pay-icon blue"><i class="fas fa-shield-alt"></i></div>
+                    <div>
+                      <strong>Venmo</strong>
+                      <span><span class="pf-default-tag">Default</span> Connected</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="pf-payment-row border-b">
+                  <div class="pf-payment-left">
+                    <div class="pf-pay-icon grey"><i class="fas fa-credit-card"></i></div>
+                    <div>
+                      <strong>Visa Card •••• 4421</strong>
+                      <span>Expires 12/29</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="pf-payment-row">
+                  <div class="pf-payment-left">
+                    <div class="pf-pay-icon grey"><i class="fas fa-credit-card"></i></div>
+                    <div>
+                      <strong>Mastercard •••• 8901</strong>
+                      <span>Expires 10/31</span>
+                    </div>
+                  </div>
+                </div>
+                <button class="pf-add-payment">
+                  <i class="fas fa-plus"></i> Add New Payment Method
+                </button>
+              </div>
+            </section>
+
+            <!-- Security & Access -->
+            <section>
+              <h2 class="pf-section-title">Security &amp; Access</h2>
+              <div class="pf-security-grid">
+                <div class="pf-security-card">
+                  <div class="pf-sec-icon yellow"><i class="fas fa-lock"></i></div>
+                  <div class="pf-sec-info">
+                    <strong>Two-Factor Authentication</strong>
+                    <span>Enabled via Authenticator</span>
+                  </div>
+                  <i class="fas fa-chevron-right pf-chevron"></i>
+                </div>
+                <div class="pf-security-card">
+                  <div class="pf-sec-icon blue"><i class="fas fa-external-link-alt"></i></div>
+                  <div class="pf-sec-info">
+                    <strong>Active Sessions</strong>
+                    <span>3 devices currently logged in</span>
+                  </div>
+                  <i class="fas fa-chevron-right pf-chevron"></i>
+                </div>
+              </div>
+            </section>
+
+          </div>
+
+          <!-- RIGHT (col-span-1) -->
+          <div class="pf-col-right">
+
+            <!-- Trust Badges -->
+            <section>
+              <h2 class="pf-section-title">Trust Badges</h2>
+              <p class="pf-badges-sub">Badges earned through positive interactions and verification.</p>
+
+              <div class="pf-badges-list">
+
+                <div class="pf-badge-row earned">
+                  <div class="pf-badge-icon"><i class="fas fa-award"></i></div>
+                  <div class="pf-badge-info">
+                    <div class="pf-badge-top">
+                      <strong>Verified Seller</strong>
+                      <i class="fas fa-check-circle pf-badge-check earned"></i>
+                    </div>
+                    <span>Listed 5+ items with 100% completion.</span>
+                  </div>
+                </div>
+
+                <div class="pf-badge-row earned">
+                  <div class="pf-badge-icon"><i class="fas fa-bolt"></i></div>
+                  <div class="pf-badge-info">
+                    <div class="pf-badge-top">
+                      <strong>Fast Responder</strong>
+                      <i class="fas fa-check-circle pf-badge-check earned"></i>
+                    </div>
+                    <span>Replies to messages in under 1 hour.</span>
+                  </div>
+                </div>
+
+                <div class="pf-badge-row earned">
+                  <div class="pf-badge-icon"><i class="fas fa-map-marker-alt"></i></div>
+                  <div class="pf-badge-info">
+                    <div class="pf-badge-top">
+                      <strong>Safe Meeter</strong>
+                      <i class="fas fa-check-circle pf-badge-check earned"></i>
+                    </div>
+                    <span>Uses designated campus exchange zones.</span>
+                  </div>
+                </div>
+
+                <div class="pf-badge-row earned">
+                  <div class="pf-badge-icon"><i class="fas fa-store"></i></div>
+                  <div class="pf-badge-info">
+                    <div class="pf-badge-top">
+                      <strong>Campus Pioneer</strong>
+                      <i class="fas fa-check-circle pf-badge-check earned"></i>
+                    </div>
+                    <span>Joined UniBuy in the first cohort.</span>
+                  </div>
+                </div>
+
+                <div class="pf-badge-row locked">
+                  <div class="pf-badge-icon locked"><i class="fas fa-star"></i></div>
+                  <div class="pf-badge-info">
+                    <div class="pf-badge-top">
+                      <strong>Elite Trader</strong>
+                      <i class="fas fa-check-circle pf-badge-check"></i>
+                    </div>
+                    <span>Complete 50+ trades with 5-star ratings.</span>
+                  </div>
+                </div>
+
+              </div>
+              <a href="#" class="pf-earn-more">How to earn more?</a>
+            </section>
+
+            <!-- Connections -->
+            <section>
+              <h2 class="pf-section-title">Connections</h2>
+              <div class="pf-card">
+
+                <div class="pf-conn-row">
+                  <div class="pf-conn-left">
+                    <i class="fas fa-envelope pf-conn-icon"></i>
+                    <div>
+                      <strong>Google Account</strong>
+                      <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="630814020e064d091610170a00064d07061523040e020a0f4d000c0e">[email&#160;protected]</a></span>
+                    </div>
+                  </div>
+                  <button class="pf-disconnect-btn">Disconnect</button>
+                </div>
+
+                <div class="pf-conn-row">
+                  <div class="pf-conn-left">
+                    <i class="fas fa-shield-alt pf-conn-icon blue"></i>
+                    <div>
+                      <strong>University Portal</strong>
+                      <span>KNUST Net Identifier</span>
+                    </div>
+                  </div>
+                  <span class="pf-connected-text">Connected</span>
+                </div>
+
+                <div class="pf-sync-row">
+                  <div>
+                    <span class="pf-sync-label">SYNC OPTIONS</span>
+                    <p class="pf-sync-desc">Share Activity to Profile</p>
+                  </div>
+                  <label class="pf-toggle">
+                    <input type="checkbox" checked />
+                    <span class="pf-toggle-track"></span>
+                  </label>
+                </div>
+
+              </div>
+            </section>
+
+            <!-- Deactivate -->
+            <div class="pf-deactivate-wrap">
+              <button class="pf-deactivate-btn">
+                <i class="fas fa-sign-out-alt"></i> Deactivate Account
+              </button>
+              <p class="pf-deactivate-note">
+                Deactivating will hide all your listings and stop notifications.<br>
+                You can reactivate by signing back in.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+        <!-- Footer -->
+        <footer class="sell-footer">
+          <div class="sell-footer-brand">
+            <div class="sell-footer-logo">
+              <img src="./assets/images/logo.png" alt="UniBuy" class="logo-img">
+              <span>UniBuy</span>
+            </div>
+            <p>The exclusive marketplace for verified university students. Buy, sell, and trade safely within your campus community.</p>
+            <div class="sell-footer-social">
+              <i class="fab fa-facebook"></i>
+              <i class="fab fa-instagram"></i>
+              <i class="fab fa-twitter"></i>
+              <i class="fab fa-linkedin"></i>
+            </div>
+          </div>
+          <div class="sell-footer-col">
+            <h4>SHOP</h4>
+            <ul>
+              <li>Textbooks</li>
+              <li>Electronics</li>
+              <li>Dorm Decor</li>
+              <li>Campus Gear</li>
+            </ul>
+          </div>
+          <div class="sell-footer-col">
+            <h4>SUPPORT</h4>
+            <ul>
+             <li>Help Center</li>
+             <li><a href="map.html">Safe Meetups</a></li>
+             <li>Trust &amp; Safety</li>
+             <li>Refund Policy</li>
+            </ul>
+          </div>
+          <div class="sell-footer-col">
+            <h4>COMPANY</h4>
+            <ul>
+              <li>About UniBuy</li>
+              <li>Careers</li>
+              <li>Privacy Policy</li>
+            </ul>
+          </div>
+        </footer>
+
+        <div class="sell-footer-bottom">
+          <p>© 2026 UniBuy Inc. All rights reserved.</p>
+          <p>&#127760; Global Campus Network &nbsp;•&nbsp; &#10003; Verified Student Only Platform</p>
+        </div>
+
+    </div><!-- /sell-main-wrap -->
+  </div><!-- /sell-layout -->
+
+</body>
+</html>

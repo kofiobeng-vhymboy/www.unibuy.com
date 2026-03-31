@@ -1,0 +1,779 @@
+/* ================================================
+   PROFILE / SETTINGS PAGE
+   profile.css — link after style.css and sell.css in profile.html
+   Layout (sidebar, topbar, footer) is inherited from sell.css.
+   This file contains only profile-specific component styles.
+================================================ */
+
+body.profile-page {
+  background: #f9fafb;
+}
+
+/* ── Main content area ── */
+.pf-main {
+  flex: 1;
+  padding: 32px 40px;
+  overflow-x: hidden;
+}
+
+.pf-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* ── Profile Header Card ── */
+.pf-header-card {
+  background: white;
+  border-radius: 20px;
+  padding: 28px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.pf-header-left {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.pf-avatar-wrap {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  flex-shrink: 0;
+}
+
+.pf-avatar-wrap img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #BBCB2E;
+}
+
+.pf-camera-btn {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #BBCB2E;
+  border: 3px solid white;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 11px;
+}
+
+.pf-name-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+}
+
+.pf-name-row h1 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+.pf-verified-badge {
+  background: #BBCB2E;
+  color: #000;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  text-transform: uppercase;
+}
+
+.pf-uni-info {
+  font-size: 14px;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.pf-uni-info i {
+  color: #94a3b8;
+  font-size: 13px;
+}
+
+.pf-stats-row {
+  display: flex;
+  gap: 32px;
+}
+
+.pf-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.pf-stat-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #94a3b8;
+}
+
+.pf-stat strong {
+  font-size: 15px;
+  color: #0f172a;
+}
+
+.pf-header-actions {
+  display: flex;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.pf-btn-outline {
+  padding: 9px 20px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 10px;
+  background: white;
+  font-size: 14px;
+  font-weight: 600;
+  color: #334155;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.pf-btn-outline:hover {
+  border-color: #BBCB2E;
+}
+
+.pf-btn-solid {
+  padding: 9px 20px;
+  border: none;
+  border-radius: 10px;
+  background: #BBCB2E;
+  font-size: 14px;
+  font-weight: 700;
+  color: #000;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.pf-btn-solid:hover {
+  background: #a0b026;
+}
+
+/* ── 3-col Grid ── */
+.pf-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.pf-col-left,
+.pf-col-right {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* ── Section Title ── */
+.pf-section-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 14px;
+}
+
+/* ── Card ── */
+.pf-card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px 24px;
+  border: 1px solid #f1f5f9;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+}
+
+.pf-card-no-pad {
+  padding: 0;
+  overflow: hidden;
+}
+
+/* ── Academic Identity ── */
+.pf-card-row-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 18px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.pf-label-lg {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f172a;
+  display: block;
+  margin-bottom: 3px;
+}
+
+.pf-text-muted {
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+.pf-pill-grey {
+  background: #f1f5f9;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 14px;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+
+.pf-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.pf-field-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #94a3b8;
+  letter-spacing: 0.5px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.pf-input-icon {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 9px 14px;
+  font-size: 13px;
+  color: #475569;
+}
+
+.pf-input-icon i {
+  color: #94a3b8;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+.pf-input-plain {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 9px 14px;
+  font-size: 13px;
+  color: #475569;
+}
+
+/* Verification box */
+.pf-verify-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+
+.pf-verify-icon {
+  color: #3b82f6;
+  font-size: 17px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.pf-verify-body {
+  flex: 1;
+}
+
+.pf-verify-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.pf-verify-top strong {
+  font-size: 13px;
+  color: #1d4ed8;
+}
+
+.pf-reverify-btn {
+  background: none;
+  border: none;
+  color: #3b82f6;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+}
+
+.pf-verify-body p {
+  font-size: 12px;
+  color: #3b82f6;
+  line-height: 1.5;
+}
+
+/* ── Payment Methods ── */
+.pf-payment-row {
+  display: flex;
+  align-items: center;
+  padding: 14px 20px;
+}
+
+.pf-payment-row.border-b {
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.pf-payment-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.pf-pay-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+.pf-pay-icon.blue {
+  background: #eff6ff;
+  color: #3b82f6;
+}
+
+.pf-pay-icon.grey {
+  background: #f1f5f9;
+  color: #64748b;
+}
+
+.pf-payment-left > div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.pf-payment-left strong {
+  font-size: 14px;
+  color: #0f172a;
+}
+
+.pf-payment-left span {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.pf-default-tag {
+  background: #e2e8f0;
+  color: #475569;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 4px;
+  margin-right: 4px;
+}
+
+.pf-add-payment {
+  width: 100%;
+  padding: 14px;
+  background: #f9fafb;
+  border: none;
+  border-top: 1.5px dashed #cbd5e1;
+  font-size: 14px;
+  font-weight: 600;
+  color: #64748b;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 0.2s;
+}
+
+.pf-add-payment:hover {
+  background: #f1f5f9;
+}
+
+/* ── Security & Access ── */
+.pf-security-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.pf-security-card {
+  background: white;
+  border: 1px solid #f1f5f9;
+  border-radius: 14px;
+  padding: 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+
+.pf-security-card:hover {
+  border-color: #BBCB2E;
+}
+
+.pf-sec-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.pf-sec-icon.yellow {
+  background: #fef9c3;
+  color: #a16207;
+}
+
+.pf-sec-icon.blue {
+  background: #eff6ff;
+  color: #3b82f6;
+}
+
+.pf-sec-info {
+  flex: 1;
+}
+
+.pf-sec-info strong {
+  display: block;
+  font-size: 14px;
+  color: #0f172a;
+  margin-bottom: 2px;
+}
+
+.pf-sec-info span {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.pf-chevron {
+  color: #cbd5e1;
+  font-size: 13px;
+}
+
+/* ── Trust Badges ── */
+.pf-badges-sub {
+  font-size: 12px;
+  color: #94a3b8;
+  margin-top: -10px;
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+.pf-badges-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.pf-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid #fef9c3;
+  background: #fefce8;
+}
+
+.pf-badge-row.locked {
+  background: #f9fafb;
+  border-color: #f1f5f9;
+  opacity: 0.6;
+}
+
+.pf-badge-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: #BBCB2E;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.pf-badge-icon.locked {
+  background: #94a3b8;
+}
+
+.pf-badge-info {
+  flex: 1;
+}
+
+.pf-badge-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2px;
+}
+
+.pf-badge-top strong {
+  font-size: 13px;
+  color: #0f172a;
+}
+
+.pf-badge-info span {
+  font-size: 11px;
+  color: #64748b;
+}
+
+.pf-badge-check {
+  font-size: 13px;
+  color: #d1d5db;
+}
+
+.pf-badge-check.earned {
+  color: #22c55e;
+}
+
+.pf-earn-more {
+  font-size: 13px;
+  font-weight: 700;
+  color: #BBCB2E;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  margin-top: 4px;
+}
+
+.pf-earn-more:hover {
+  text-decoration: underline;
+}
+
+/* ── Connections ── */
+.pf-conn-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.pf-conn-row:last-of-type {
+  border-bottom: none;
+}
+
+.pf-conn-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pf-conn-icon {
+  font-size: 16px;
+  color: #94a3b8;
+  width: 20px;
+  text-align: center;
+}
+
+.pf-conn-icon.blue {
+  color: #3b82f6;
+}
+
+.pf-conn-left > div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.pf-conn-left strong {
+  font-size: 13px;
+  color: #0f172a;
+}
+
+.pf-conn-left span {
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+.pf-disconnect-btn {
+  background: none;
+  border: none;
+  font-size: 11px;
+  font-weight: 700;
+  color: #ef4444;
+  cursor: pointer;
+  padding: 0;
+}
+
+.pf-disconnect-btn:hover {
+  text-decoration: underline;
+}
+
+.pf-connected-text {
+  font-size: 11px;
+  font-weight: 700;
+  color: #94a3b8;
+}
+
+/* Sync row */
+.pf-sync-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 14px;
+  margin-top: 4px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.pf-sync-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #94a3b8;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 3px;
+}
+
+.pf-sync-desc {
+  font-size: 13px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+/* Toggle switch */
+.pf-toggle {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
+.pf-toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.pf-toggle-track {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background: #e2e8f0;
+  border-radius: 999px;
+  transition: 0.3s;
+}
+
+.pf-toggle-track::before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  left: 3px;
+  bottom: 3px;
+  background: white;
+  border-radius: 50%;
+  transition: 0.3s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.pf-toggle input:checked + .pf-toggle-track {
+  background: #BBCB2E;
+}
+
+.pf-toggle input:checked + .pf-toggle-track::before {
+  transform: translateX(18px);
+}
+
+/* ── Deactivate ── */
+.pf-deactivate-wrap {
+  text-align: center;
+}
+
+.pf-deactivate-btn {
+  width: 100%;
+  padding: 14px;
+  background: transparent;
+  border: 2px solid #fca5a5;
+  color: #ef4444;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 0.2s;
+}
+
+.pf-deactivate-btn:hover {
+  background: #fff5f5;
+}
+
+.pf-deactivate-note {
+  font-size: 12px;
+  color: #94a3b8;
+  margin-top: 10px;
+  line-height: 1.6;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .pf-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .pf-main {
+    padding: 16px;
+  }
+
+  .pf-two-col {
+    grid-template-columns: 1fr;
+  }
+
+  .pf-security-grid {
+    grid-template-columns: 1fr;
+  }
+}

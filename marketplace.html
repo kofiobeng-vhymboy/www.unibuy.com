@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>UniBuy - Marketplace</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Aclonica&family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="marketplace-page">
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <img src="./assets/images/logo.png" alt="UniBuy" class="logo-img">
+        <span>UniBuy</span>
+      </div>
+      <nav class="main-nav">
+        <a href="home.html" class="nav-link">Home</a>
+        <a href="marketplace.html" class="nav-link active">Marketplace</a>
+        <a href="sell.html" class="nav-link">Sell</a>
+      </nav>
+      <div class="nav-search">
+        <input type="text" placeholder="Search by campus or item..." />
+      </div>
+      <div class="user-actions">
+        <button class="icon-btn" title="Wishlist"><i class="far fa-heart"></i></button>
+        <button class="icon-btn" title="Messages">
+          <i class="far fa-comment-dots"></i>
+          <span class="dot"></span>
+        </button>
+        <button class="post-btn"><i class="fas fa-plus"></i> Post Item</button>
+        <div class="profile">
+          <img src="./assets/svg/profile 2.svg" alt="Profile" class="avatar" />
+          <span class="online-dot"></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Marketplace Main -->
+  <main class="marketplace-main">
+    <div class="marketplace-grid">
+
+      <!-- LEFT: Filters Sidebar -->
+      <aside class="filters-sidebar">
+        <div class="filters-header">
+          <h3><i class="fas fa-sliders-h"></i> Filters</h3>
+          <button id="reset-filters" class="reset-btn">Reset All</button>
+        </div>
+
+        <!-- Condition -->
+        <div class="filter-group">
+          <button class="filter-toggle">
+            Condition <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="filter-options condition-filters">
+            <label><input type="checkbox" value="New" /> New</label>
+            <label><input type="checkbox" value="Gently Used" /> Gently Used</label>
+            <label><input type="checkbox" value="Well Loved" /> Well Loved</label>
+          </div>
+        </div>
+
+        <!-- Price Range -->
+        <div class="filter-group">
+          <button class="filter-toggle">
+            Price Range <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="filter-options">
+            <div class="price-slider">
+              <input type="range" id="price-slider" min="0" max="10000" value="10000" step="10" />
+              <div class="price-inputs">
+                <div class="price-input-box">
+                  <label>MIN</label>
+                  <!-- FIX: changed to input fields so they look like the screenshot -->
+                  <input type="text" id="min-price" value="₵ 0" readonly />
+                </div>
+                <div class="price-input-box">
+                  <label>MAX</label>
+                  <input type="text" id="max-price" value="₵ 10000" readonly />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pickup Zone -->
+        <div class="filter-group">
+          <button class="filter-toggle">
+            Pickup Zone <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="filter-options pickup-filters">
+            <label><input type="checkbox" value="KSB" /> KSB</label>
+            <label><input type="checkbox" value="Commercial Area" /> Commercial Area</label>
+            <label><input type="checkbox" value="Engineering Gate" /> Engineering Gate</label>
+            <label><input type="checkbox" value="Prempeh Library" /> Prempeh Library</label>
+            <label><input type="checkbox" value="E-Learning Center" /> E-Learning Center</label>
+            <label><input type="checkbox" value="Medical Village" /> Medical Village</label>
+          </div>
+        </div>
+
+        <!-- Safe Meetups Box -->
+        <div class="safe-meetups-box">
+          <h4><i class="fas fa-shield-alt"></i> Safe Meetups</h4>
+          <p>Always meet at verified campus zones. Look for the blue lamp posts for monitored exchanges.</p>
+          <a href="#" class="view-map-link">View Map of Zones →</a>
+        </div>
+      </aside>
+
+      <!-- RIGHT: Products Area -->
+      <div class="products-area">
+
+        <!-- Products header: results text + active filter tags + sort -->
+        <div class="products-header">
+          <div class="active-filter-bar">
+            <span class="results-text">Showing <strong id="result-count">8</strong> results for</span>
+            <span class="filter-tag highlight-tag">"CAMPUS WIDE"</span>
+            <button class="sort-tag" id="newly-listed-tag">
+              <i class="far fa-clock"></i> Newly Listed
+              <span class="tag-remove" id="remove-newly">×</span>
+            </button>
+            <button class="sort-tag" id="nearby-tag">
+              <i class="fas fa-map-marker-alt"></i> Nearby Only
+              <span class="tag-remove" id="remove-nearby">×</span>
+            </button>
+            <div id="active-filters" style="display:contents;"></div>
+          </div>
+          <div class="sort-options">
+            <select class="sort-select" id="sort-select">
+              <option value="popularity">↕ Sort: Popularity</option>
+              <option value="newest">Newly Listed</option>
+              <option value="nearby">Nearby Only</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Product Grid -->
+        <div class="product-grid">
+
+          <!-- Card 1 — FIX: data-price now matches mp-price -->
+          <div class="product-card"
+               data-condition="Gently Used"
+               data-price="180"
+               data-location="Commercial Area">
+            <div class="card-image">
+              <img src="./assets/images/Ergonomic.webp" alt="Ergonomic Chair" />
+              <span class="featured-badge">✦ FEATURED</span>
+              <button class="favorite-btn"><i class="far fa-heart"></i></button>
+            </div>
+            <div class="card-body">
+              <span class="condition-badge gently-used">Gently Used</span>
+              <div class="card-title-price">
+                <h3>Ergonomic Chair</h3>
+                <span class="mp-price">₵180</span>
+              </div>
+              <div class="seller-row">
+                <div class="seller-left">
+                  <div class="seller-avatar">A</div>
+                  <span class="seller-name">Alex R.</span>
+                </div>
+                <span class="seller-rating"><i class="fas fa-star"></i> 4.8</span>
+              </div>
+              <span class="mp-location"><i class="fas fa-map-marker-alt"></i> Commercial Area</span>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="product-card"
+               data-condition="New"
+               data-price="65"
+               data-location="KSB">
+            <div class="card-image">
+              <img src="./assets/images/Chem 101.webp" alt="Chem 101" />
+              <button class="favorite-btn"><i class="far fa-heart"></i></button>
+            </div>
+            <div class="card-body">
+              <span class="condition-badge new-badge">New</span>
+              <div class="card-title-price">
+                <h3>Chem 101</h3>
+                <span class="mp-price">₵65</span>
+              </div>
+              <div class="seller-row">
+                <div class="seller-left">
+                  <div class="seller-avatar">S</div>
+                  <span class="seller-name">Sarah L.</span>
+                </div>
+                <span class="seller-rating"><i class="fas fa-star"></i> 4.9</span>
+              </div>
+              <span class="mp-location"><i class="fas fa-map-marker-alt"></i> KSB</span>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="product-card"
+               data-condition="Well Loved"
+               data-price="950"
+               data-location="Commercial Area">
+            <div class="card-image">
+              <img src="./assets/images/Mini Fridge.webp" alt="Mini Fridge" />
+              <button class="favorite-btn"><i class="far fa-heart"></i></button>
+            </div>
+            <div class="card-body">
+              <span class="condition-badge well-loved">Well Loved</span>
+              <div class="card-title-price">
+                <h3>Mini Fridge</h3>
+                <span class="mp-price">₵950</span>
+              </div>
+              <div class="seller-row">
+                <div class="seller-left">
+                  <div class="seller-avatar">J</div>
+                  <span class="seller-name">Jordan M.</span>
+                </div>
+                <span class="seller-rating"><i class="fas fa-star"></i> 4.5</span>
+              </div>
+              <span class="mp-location"><i class="fas fa-map-marker-alt"></i> Commercial Area</span>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="product-card"
+               data-condition="Gently Used"
+               data-price="150"
+               data-location="Prempeh Library">
+            <div class="card-image">
+              <img src="./assets/images/Apple AirPods.webp" alt="Apple AirPods" />
+              <span class="featured-badge">✦ FEATURED</span>
+              <button class="favorite-btn"><i class="far fa-heart"></i></button>
+            </div>
+            <div class="card-body">
+              <span class="condition-badge gently-used">Gently Used</span>
+              <div class="card-title-price">
+                <h3>Apple AirPods</h3>
+                <span class="mp-price">₵150</span>
+              </div>
+              <div class="seller-row">
+                <div class="seller-left">
+                  <div class="seller-avatar">C</div>
+                  <span class="seller-name">Chris P.</span>
+                </div>
+                <span class="seller-rating"><i class="fas fa-star"></i> 4.9</span>
+              </div>
+              <span class="mp-location"><i class="fas fa-map-marker-alt"></i> Prempeh Lib</span>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="product-card"
+               data-condition="New"
+               data-price="30"
+               data-location="E-Learning Center">
+            <div class="card-image">
+              <img src="./assets/images/Yoga Mat.webp" alt="Yoga Mat" />
+              <button class="favorite-btn"><i class="far fa-heart"></i></button>
+            </div>
+            <div class="card-body">
+              <span class="condition-badge new-badge">New</span>
+              <div class="card-title-price">
+                <h3>Yoga Mat with Bag</h3>
+                <span class="mp-price">₵30</span>
+              </div>
+              <div class="seller-row">
+                <div class="seller-left">
+                  <div class="seller-avatar">E</div>
+                  <span class="seller-name">Elena K.</span>
+                </div>
+                <span class="seller-rating"><i class="fas fa-star"></i> 4.7</span>
+              </div>
+              <span class="mp-location"><i class="fas fa-map-marker-alt"></i> E-Center</span>
+            </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="product-card"
+               data-condition="Well Loved"
+               data-price="105"
+               data-location="Medical Village">
+            <div class="card-image">
+              <img src="./assets/images/Industrial.webp" alt="Industrial Lamp" />
+              <button class="favorite-btn"><i class="far fa-heart"></i></button>
+            </div>
+            <div class="card-body">
+              <span class="condition-badge well-loved">Well Loved</span>
+              <div class="card-title-price">
+                <h3>Industrial Lamp</h3>
+                <span class="mp-price">₵105</span>
+              </div>
+              <div class="seller-row">
+                <div class="seller-left">
+                  <div class="seller-avatar">M</div>
+                  <span class="seller-name">Mike D.</span>
+                </div>
+                <span class="seller-rating"><i class="fas fa-star"></i> 4.3</span>
+              </div>
+              <span class="mp-location"><i class="fas fa-map-marker-alt"></i> Medical Vils</span>
+            </div>
+          </div>
+
+          <!-- Card 7 -->
+          <div class="product-card"
+               data-condition="Gently Used"
+               data-price="101"
+               data-location="Engineering Gate">
+            <div class="card-image">
+              <img src="./assets/images/Graphing.webp" alt="Graphing Calculator" />
+              <span class="featured-badge">✦ FEATURED</span>
+              <button class="favorite-btn"><i class="far fa-heart"></i></button>
+            </div>
+            <div class="card-body">
+              <span class="condition-badge gently-used">Gently Used</span>
+              <div class="card-title-price">
+                <h3>Graphing Calculator</h3>
+                <span class="mp-price">₵101</span>
+              </div>
+              <div class="seller-row">
+                <div class="seller-left">
+                  <div class="seller-avatar">W</div>
+                  <span class="seller-name">Wei T.</span>
+                </div>
+                <span class="seller-rating"><i class="fas fa-star"></i> 4.2</span>
+              </div>
+              <span class="mp-location"><i class="fas fa-map-marker-alt"></i> Engineering Gate</span>
+            </div>
+          </div>
+
+          <!-- Card 8 -->
+          <div class="product-card"
+               data-condition="Gently Used"
+               data-price="95"
+               data-location="KSB">
+            <div class="card-image">
+              <img src="./assets/images/Coffee Maker.webp" alt="Coffee Maker" />
+              <button class="favorite-btn"><i class="far fa-heart"></i></button>
+            </div>
+            <div class="card-body">
+              <span class="condition-badge gently-used">Gently Used</span>
+              <div class="card-title-price">
+                <h3>Coffee Maker</h3>
+                <span class="mp-price">₵95</span>
+              </div>
+              <div class="seller-row">
+                <div class="seller-left">
+                  <div class="seller-avatar">S</div>
+                  <span class="seller-name">Sam B.</span>
+                </div>
+                <span class="seller-rating"><i class="fas fa-star"></i> 4.6</span>
+              </div>
+              <span class="mp-location"><i class="fas fa-map-marker-alt"></i> KSB</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination">
+          <button class="page-btn">Previous</button>
+          <button class="page-btn active">1</button>
+          <button class="page-btn">2</button>
+          <button class="page-btn">3</button>
+          <button class="page-btn">...</button>
+          <button class="page-btn">12</button>
+          <button class="page-btn">Next</button>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="./assets/images/logo.png" alt="UniBuy" class="logo-img">
+          <span>UniBuy</span>
+        </div>
+        <p>
+          The exclusive marketplace for verified university students.
+          Buy, sell, and trade safely within your campus community.
+        </p>
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <div class="footer-column">
+          <h4>SHOP</h4>
+          <ul>
+            <li><a href="#">Textbooks</a></li>
+            <li><a href="#">Electronics</a></li>
+            <li><a href="#">Dorm Decor</a></li>
+            <li><a href="#">Campus Gear</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>SUPPORT</h4>
+          <ul>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="map.html">Safe Meetups</a></li>
+            <li><a href="#">Trust & Safety</a></li>
+            <li><a href="#">Refund Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>COMPANY</h4>
+          <ul>
+            <li><a href="#">About UniBuy</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Student Ambassadors</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 UniBuy Inc. All rights reserved.</p>
+      <p>&#127760; Global Campus Network &nbsp;•&nbsp; &#10003; Verified Student Only Platform</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const cards = document.querySelectorAll('.product-card');
+      const conditionChecks = document.querySelectorAll('.condition-filters input');
+      const priceSlider = document.getElementById('price-slider');
+      const maxPriceDisplay = document.getElementById('max-price');
+      const pickupChecks = document.querySelectorAll('.pickup-filters input');
+      const sortSelect = document.getElementById('sort-select');
+      const resetBtn = document.getElementById('reset-filters');
+      const activeFiltersDiv = document.getElementById('active-filters');
+      const resultCount = document.getElementById('result-count');
+
+      // FIX: store original order so we can restore it for popularity sort
+      const grid = document.querySelector('.product-grid');
+      const originalOrder = Array.from(cards);
+
+      let activeFilters = {
+        conditions: [],
+        maxPrice: 10000,
+        pickupZones: [],
+        sortBy: 'popularity'
+      };
+
+      function applyFiltersAndSort() {
+        let visibleCards = [];
+
+        cards.forEach(card => {
+          const cond = card.dataset.condition || '';
+          const price = parseFloat(card.dataset.price) || 0;
+          const loc = card.dataset.location || '';
+
+          let show = true;
+
+          // Condition filter
+          if (activeFilters.conditions.length > 0) {
+            show = show && activeFilters.conditions.includes(cond);
+          }
+
+          // Price filter
+          show = show && price <= activeFilters.maxPrice;
+
+          // Pickup zone filter
+          if (activeFilters.pickupZones.length > 0) {
+            show = show && activeFilters.pickupZones.some(zone =>
+              loc.toLowerCase().includes(zone.toLowerCase())
+            );
+          }
+
+          // FIX: use 'flex' not 'block' so card layout stays correct
+          card.style.display = show ? '' : 'none';
+          if (show) visibleCards.push(card);
+        });
+
+        // Update result count
+        resultCount.textContent = visibleCards.length;
+
+        // Sort
+        if (activeFilters.sortBy === 'price-low') {
+          visibleCards.sort((a, b) => parseFloat(a.dataset.price) - parseFloat(b.dataset.price));
+        } else if (activeFilters.sortBy === 'price-high') {
+          visibleCards.sort((a, b) => parseFloat(b.dataset.price) - parseFloat(a.dataset.price));
+        } else if (activeFilters.sortBy === 'newest') {
+          visibleCards.reverse();
+        } else {
+          // Popularity — restore original order
+          visibleCards.sort((a, b) => originalOrder.indexOf(a) - originalOrder.indexOf(b));
+        }
+
+        // Re-append in sorted order
+        visibleCards.forEach(card => grid.appendChild(card));
+      }
+
+      function updateActiveTags() {
+        activeFiltersDiv.innerHTML = '';
+
+        activeFilters.conditions.forEach(cond => {
+          const tag = document.createElement('span');
+          tag.className = 'filter-tag';
+          tag.innerHTML = cond + ' <button class="remove-tag" data-type="condition" data-value="' + cond + '">×</button>';
+          activeFiltersDiv.appendChild(tag);
+        });
+
+        if (activeFilters.maxPrice < 10000) {
+          const tag = document.createElement('span');
+          tag.className = 'filter-tag';
+          tag.innerHTML = 'Up to ₵' + activeFilters.maxPrice + ' <button class="remove-tag" data-type="price">×</button>';
+          activeFiltersDiv.appendChild(tag);
+        }
+
+        activeFilters.pickupZones.forEach(zone => {
+          const tag = document.createElement('span');
+          tag.className = 'filter-tag';
+          tag.innerHTML = zone + ' <button class="remove-tag" data-type="pickup" data-value="' + zone + '">×</button>';
+          activeFiltersDiv.appendChild(tag);
+        });
+      }
+
+      // Condition checkboxes
+      conditionChecks.forEach(check => {
+        check.addEventListener('change', () => {
+          activeFilters.conditions = Array.from(conditionChecks)
+            .filter(c => c.checked).map(c => c.value);
+          applyFiltersAndSort();
+          updateActiveTags();
+        });
+      });
+
+      // Price slider
+      function updateSliderFill() {
+        const percent = (priceSlider.value / priceSlider.max) * 100;
+        priceSlider.style.background = `linear-gradient(to right, #BBCB2E ${percent}%, #d1d5db ${percent}%)`;
+      }
+
+      priceSlider.addEventListener('input', () => {
+        activeFilters.maxPrice = parseInt(priceSlider.value);
+        maxPriceDisplay.value = '₵ ' + activeFilters.maxPrice;
+        updateSliderFill();
+        applyFiltersAndSort();
+        updateActiveTags();
+      });
+
+      // Set initial fill on page load
+      updateSliderFill();
+
+      // Pickup zones
+      pickupChecks.forEach(check => {
+        check.addEventListener('change', () => {
+          activeFilters.pickupZones = Array.from(pickupChecks)
+            .filter(c => c.checked).map(c => c.value);
+          applyFiltersAndSort();
+          updateActiveTags();
+        });
+      });
+
+      // Sort select + tag buttons in sync
+      const newlyTag = document.getElementById('newly-listed-tag');
+      const nearbyTag = document.getElementById('nearby-tag');
+
+      sortSelect.addEventListener('change', () => {
+        activeFilters.sortBy = sortSelect.value;
+        newlyTag.classList.toggle('active', sortSelect.value === 'newest');
+        nearbyTag.classList.toggle('active', sortSelect.value === 'nearby');
+        applyFiltersAndSort();
+      });
+
+      newlyTag.addEventListener('click', () => {
+        const isActive = newlyTag.classList.toggle('active');
+        nearbyTag.classList.remove('active');
+        activeFilters.sortBy = isActive ? 'newest' : 'popularity';
+        sortSelect.value = activeFilters.sortBy;
+        applyFiltersAndSort();
+      });
+
+      nearbyTag.addEventListener('click', () => {
+        const isActive = nearbyTag.classList.toggle('active');
+        newlyTag.classList.remove('active');
+        activeFilters.sortBy = isActive ? 'nearby' : 'popularity';
+        sortSelect.value = activeFilters.sortBy;
+        applyFiltersAndSort();
+      });
+
+      // Reset All
+      resetBtn.addEventListener('click', () => {
+        conditionChecks.forEach(c => c.checked = false);
+        pickupChecks.forEach(c => c.checked = false);
+        priceSlider.value = 10000;
+        maxPriceDisplay.value = '₵ 10000';
+        updateSliderFill();
+        activeFilters = { conditions: [], maxPrice: 10000, pickupZones: [], sortBy: 'popularity' };
+        sortSelect.value = 'popularity';
+        newlyTag.classList.remove('active');
+        nearbyTag.classList.remove('active');
+        applyFiltersAndSort();
+        updateActiveTags();
+      });
+
+      // Remove individual filter tag
+      activeFiltersDiv.addEventListener('click', e => {
+        if (e.target.classList.contains('remove-tag')) {
+          const type = e.target.dataset.type;
+          const value = e.target.dataset.value;
+
+          if (type === 'condition') {
+            document.querySelector(`.condition-filters input[value="${value}"]`).checked = false;
+            activeFilters.conditions = activeFilters.conditions.filter(v => v !== value);
+          } else if (type === 'price') {
+            priceSlider.value = 10000;
+            maxPriceDisplay.value = '₵ 10000';
+            activeFilters.maxPrice = 10000;
+          } else if (type === 'pickup') {
+            document.querySelector(`.pickup-filters input[value="${value}"]`).checked = false;
+            activeFilters.pickupZones = activeFilters.pickupZones.filter(v => v !== value);
+          }
+
+          applyFiltersAndSort();
+          updateActiveTags();
+        }
+      });
+
+      // Filter toggle collapse/expand
+      document.querySelectorAll('.filter-toggle').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const options = btn.nextElementSibling;
+          const icon = btn.querySelector('i');
+          const isOpen = options.style.display !== 'none';
+          options.style.display = isOpen ? 'none' : 'block';
+          icon.style.transform = isOpen ? 'rotate(-90deg)' : 'rotate(0deg)';
+        });
+      });
+
+      // Initial run
+      applyFiltersAndSort();
+      updateActiveTags();
+    });
+
+    // Heart/favourite toggle — turns red when clicked
+       document.querySelectorAll('.favorite-btn').forEach(btn => {
+         btn.addEventListener('click', function () {
+         const icon = this.querySelector('i');
+         icon.classList.toggle('far');
+         icon.classList.toggle('fas');
+         icon.style.color = icon.classList.contains('fas') ? '#ef4444' : '#64748b';
+        });
+      });
+
+  </script>
+</body>
+</html>
