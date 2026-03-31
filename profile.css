@@ -777,3 +777,40 @@ body.profile-page {
     grid-template-columns: 1fr;
   }
 }
+/* --- Add to the end of sell.css or profile.css --- */
+@media (max-width: 992px) {
+  .sell-sidebar, .profile-sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    top: 0;
+    flex-direction: row;
+    overflow-x: auto; /* Allows swiping through menu items */
+    padding: 10px;
+  }
+
+  .sell-main-wrap, .pf-main {
+    margin-left: 0; /* Removes the gap left by the sidebar */
+    padding: 20px;
+  }
+
+  .sell-nav, .sidebar-menu {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .sell-sidebar-logo, .sidebar-menu li span {
+    display: none; /* Hides text to save space on mobile */
+  }
+}
+
+@media (max-width: 768px) {
+  .pf-header-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .pf-grid, .sell-stats-grid {
+    grid-template-columns: 1fr; /* Single column for settings/stats */
+  }
+}
