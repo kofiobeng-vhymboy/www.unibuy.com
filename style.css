@@ -530,3 +530,33 @@ body.marketplace-page { background: #f9fafb; }
     display: none; /* Usually better to hide links on mobile or use a hamburger menu */
   }
 }
+/* --- GLOBAL MOBILE FIXES --- */
+@media (max-width: 768px) {
+  /* Fix the Navbar visibility */
+  .nav-container {
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 15px !important;
+    gap: 10px;
+  }
+
+  .main-nav {
+    display: flex !important; /* Ensures it's not hidden */
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+  }
+
+  /* Fix Marketplace Grid shifting */
+  .mp-grid {
+    grid-template-columns: 1fr 1fr !important; /* 2 items per row */
+    gap: 12px !important;
+    padding: 10px;
+  }
+
+  .mp-card img {
+    height: 150px !important;
+    object-fit: cover;
+  }
+}
