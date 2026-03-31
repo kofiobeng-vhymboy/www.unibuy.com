@@ -480,3 +480,28 @@ body.marketplace-page { background: #f9fafb; }
 @media (max-width: 480px) {
   .product-grid { grid-template-columns: 1fr; }
 }
+/* --- Add to the very end of style.css --- */
+@media (max-width: 1024px) {
+  .container { 
+    grid-template-columns: 1fr; /* Stacks login image and form */
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-container {
+    padding: 10px 20px;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .main-nav {
+    width: 100%;
+    justify-content: space-around;
+    font-size: 14px;
+  }
+
+  .nav-search {
+    width: 100%;
+    max-width: none;
+  }
+}
