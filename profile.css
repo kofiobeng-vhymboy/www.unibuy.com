@@ -777,40 +777,81 @@ body.profile-page {
     grid-template-columns: 1fr;
   }
 }
-/* --- Add to the end of sell.css or profile.css --- */
+/* --- SELL PAGE MOBILE FIX --- */
 @media (max-width: 992px) {
-  .sell-sidebar, .profile-sidebar {
-    width: 100%;
-    height: auto;
-    position: relative;
+  /* 1. The Sidebar Drawer */
+  .sell-sidebar {
+    position: fixed !important;
+    left: -280px; /* Hide off-screen */
     top: 0;
-    flex-direction: row;
-    overflow-x: auto; /* Allows swiping through menu items */
-    padding: 10px;
+    width: 260px !important;
+    height: 100vh !important;
+    background: white !important;
+    z-index: 2000;
+    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex !important;
+    flex-direction: column !important;
+    box-shadow: 10px 0 25px rgba(0,0,0,0.15);
+    padding: 20px 0 !important;
+  }
+
+  /* Slide in when "active" */
+  .sell-sidebar.active {
+    left: 0 !important;
+  }
+
+  /* 2. Show Icons and Text together */
+  .sell-nav {
+    flex-direction: column !important;
+    display: flex !important;
+    padding: 20px 0 !important;
+  }
+
+  .sell-nav-item {
+    display: flex !important;
+    align-items: center !important;
+    gap: 15px !important;
+    padding: 15px 25px !important;
+    font-size: 16px !important;
+    color: #334155 !important;
+    width: 100%;
+  }
+
+  /* 3. The Floating Hamburger Button */
+  .mobile-menu-btn {
+    display: flex !important;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: #BBCB2E; /* Your Brand Lime */
+    color: black;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    z-index: 2100;
+    font-weight: 700;
+    font-size: 14px;
+    gap: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    cursor: pointer;
+  }
+
+  /* 4. Adjust Main Layout */
+  .sell-layout {
+    display: block !important;
   }
 
   .sell-main-wrap, .pf-main {
-    margin-left: 0; /* Removes the gap left by the sidebar */
-    padding: 20px;
+    margin-left: 0 !important;
+    padding: 85px 20px 20px 20px !important; /* Extra top padding for the button */
   }
 
-  .sell-nav, .sidebar-menu {
-    display: flex;
-    flex-direction: row;
-  }
-
-  .sell-sidebar-logo, .sidebar-menu li span {
-    display: none; /* Hides text to save space on mobile */
+  .sell-sidebar-logo {
+    padding: 0 25px 20px !important;
   }
 }
 
-@media (max-width: 768px) {
-  .pf-header-card {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .pf-grid, .sell-stats-grid {
-    grid-template-columns: 1fr; /* Single column for settings/stats */
-  }
+/* Hide button on computers */
+@media (min-width: 993px) {
+  .mobile-menu-btn { display: none !important; }
 }
